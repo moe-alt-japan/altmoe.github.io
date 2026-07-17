@@ -93,6 +93,17 @@
       <div><h2>Flip Flashcards</h2><p>Tap a card to reveal the Japanese meaning.</p></div>
       <button id="shuffleCardsBtn" class="primary-btn">🔀 Shuffle</button>
     </div>
+    <div class="filter-bar">
+      <input id="wordSearch" type="search" placeholder="Search English or Japanese…">
+      <select id="partFilter">
+        <option value="all">All parts</option>
+      </select>
+      <select id="categoryFilter">
+        <option value="all">All categories</option>
+      </select>
+      <button id="clearFiltersBtn" class="secondary-btn">Clear</button>
+    </div>
+    <p id="filterResultText" class="filter-result"></p>
     <div id="flashcardGrid" class="flashcard-grid"></div>
   </section>
 
