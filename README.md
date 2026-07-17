@@ -23,3 +23,7 @@ Also upload the new folder:
 
 Commit message:
 `Phase 3 - Add NH3 Unit 1 vocabulary database`
+
+
+## Phase 3.1 improvement
+- The Fill in the Blank game now displays the Japanese meaning and reading of the missing English word as a hint.
