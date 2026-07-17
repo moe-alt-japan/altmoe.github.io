@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NH1 Unit 4 Vocabularies (単語)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>NH1 Unit 4 Vocabularies <span>(単語)</span></h1>
+      <p>Learn English vocabulary through flashcards and games.</p>
+    </div>
+    <div class="header-actions">
+      <div class="xp-pill">⭐ <span id="xpValue">0</span> XP</div>
+      <button id="soundBtn" class="icon-btn" aria-label="Toggle sound">🔊</button>
+      <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">☀️</button>
+    </div>
+  </header>
+
+  <nav class="mode-nav" aria-label="Game modes">
+    <button class="mode-btn active" data-mode="flashcards">Flashcards / フラッシュカード</button>
+    <button class="mode-btn" data-mode="quiz">Quiz / クイズ</button>
+    <button class="mode-btn" data-mode="matching">Matching / マッチング</button>
+    <button class="mode-btn" data-mode="memory">Memory / メモリー</button>
+  </nav>
+
+  <main>
+    <section id="flashcards" class="mode-section active">
+      <div class="section-head">
+        <div>
+          <h2>Flip Vocabulary Flashcards</h2>
+          <p>Tap a card to reveal the Japanese meaning.</p>
+        </div>
+        <button id="shuffleBtn" class="primary-btn">🔀 Shuffle / シャッフル</button>
+      </div>
+      <div id="flashcardGrid" class="flashcard-grid"></div>
+    </section>
+
+    <section id="quiz" class="mode-section">
+      <div class="game-panel">
+        <div class="progress-row">
+          <span id="quizProgress">1 / 10</span>
+          <span id="quizScore">Score: 0</span>
+        </div>
+        <div id="quizPrompt" class="quiz-prompt"></div>
+        <div id="quizChoices" class="choice-grid"></div>
+        <div id="quizFeedback" class="feedback"></div>
+        <button id="quizNextBtn" class="primary-btn hidden">Next / 次へ</button>
+      </div>
+    </section>
+
+    <section id="matching" class="mode-section">
+      <div class="game-panel">
+        <div class="progress-row">
+          <span>Match English and Japanese</span>
+          <span id="matchProgress">0 / 6</span>
+        </div>
+        <div id="matchingBoard" class="matching-board"></div>
+        <button id="newMatchingBtn" class="secondary-btn">New Round / 新しいラウンド</button>
+      </div>
+    </section>
+
+    <section id="memory" class="mode-section">
+      <div class="game-panel">
+        <div class="progress-row">
+          <span>Find all matching pairs</span>
+          <span id="memoryProgress">0 / 6</span>
+        </div>
+        <div id="memoryBoard" class="memory-board"></div>
+        <button id="newMemoryBtn" class="secondary-btn">New Round / 新しいラウンド</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="celebration" class="celebration" aria-hidden="true"></div>
+
+  <footer>
+    <p>Made for English learning · Progress is saved on this device.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
