@@ -1,3 +1,23 @@
-# NH English Learning Portal — Phase 1
+# NH English Learning Portal — Phase 2
 
-Grade folders, unit folders, and reusable games. NH1 Unit 4 is currently active. NH3 Unit 1 will be added next.
+This version adds a complete reusable vocabulary game engine.
+
+## Included modes
+- Flashcards
+- Quiz
+- Spelling
+- Matching
+- Memory
+- Speed Round
+- Hangman
+- Fill in the Blank
+- Favorites
+- Wrong Answer Review
+
+## Upload
+Replace the existing files in the root of your GitHub Pages repository:
+- index.html
+- style.css
+- script.js
+- data.js
+- README.md

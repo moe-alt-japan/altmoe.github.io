@@ -1,6 +1,48 @@
 const PORTAL_DATA={
-nh1:{label:"Grade 7",title:"NH1 Units",units:{
-1:null,2:null,3:null,
-4:{title:"NH1 Unit 4",subtitle:"New Zealand and Time",words:[
-["New Zealand","ニュージーランド","🇳🇿"],["puppy, puppies","子イヌ","🐶"],["of","～の","🔗"],["someday","いつか","🌅"],["lot","[a lotまたはlotsで]たくさん","📦"],["they","彼らは、彼女らは","👥"],["animal(s)","動物","🐾"],["visit","～を訪ねる","✈️"],["Japan","日本","🇯🇵"],["many","たくさんの、多くの","👨‍👩‍👧‍👦"],["one of","～の1つ[1人]","1️⃣"],["a lot of","たくさんの、多数の","📚"],["How many ...?","どれくらい多くの、いくつの","❓"],["they’re","⇐ they are","💬"],["noon","正午、真昼","☀️"],["last","最後の、最終の","🏁"],["like","～のような","👍"],["o’clock","～時","🕐"],["netball","ネットボール","🏐"],["time","時刻","⏰"],["afternoon","午後","🌤️"],["sport(s)","スポーツ","🏅"],["a.m.","午前","🌅"],["p.m.","午後","🌇"],["basketball","バスケットボール","🏀"],["Sounds ...","～そうですね。","👂"],["front","前、正面","⬆️"],["be","～である、～になる","✨"],["nervous","緊張して","😰"],["worry","心配する、悩む","😟"],["yourself","あなた自身を[に]","🪞"],["sheep","ヒツジ","🐑"],["kiwi(s)","キーウィ","🥝"],["right","正しい、正確な","✅"],["turn","順番、番","🔄"],["please","どうぞ、お願いします","🙏"],["look","見る、目を向ける","👀"],["enjoy oneself","楽しむ、楽しく過ごす","🎉"],["look at","～を見る","🔎"]
-]}}},nh2:{label:"Grade 8",title:"NH2 Units",units:{1:null,2:null,3:null,4:null}},nh3:{label:"Grade 9",title:"NH3 Units",units:{1:null,2:null,3:null,4:null}}};
+  nh1:{label:"Grade 7",title:"NH1 Units",units:{
+    1:null,2:null,3:null,
+    4:{title:"NH1 Unit 4",subtitle:"New Zealand and Time",words:[
+      ["New Zealand","ニュージーランド","🇳🇿","I want to visit New Zealand."],
+      ["puppy, puppies","子イヌ","🐶","The puppies are very cute."],
+      ["of","～の","🔗","This is a picture of my family."],
+      ["someday","いつか","🌅","I want to travel someday."],
+      ["lot","[a lotまたはlotsで]たくさん","📦","We have a lot of books."],
+      ["they","彼らは、彼女らは","👥","They are my friends."],
+      ["animal(s)","動物","🐾","I like animals."],
+      ["visit","～を訪ねる","✈️","I visit my grandparents."],
+      ["Japan","日本","🇯🇵","Japan is my home."],
+      ["many","たくさんの、多くの","👨‍👩‍👧‍👦","Many students like sports."],
+      ["one of","～の1つ[1人]","1️⃣","She is one of my friends."],
+      ["a lot of","たくさんの、多数の","📚","There are a lot of books."],
+      ["How many ...?","どれくらい多くの、いくつの","❓","How many pens do you have?"],
+      ["they’re","⇐ they are","💬","They're from New Zealand."],
+      ["noon","正午、真昼","☀️","Let's meet at noon."],
+      ["last","最後の、最終の","🏁","This is the last question."],
+      ["like","～のような","👍","It looks like a bird."],
+      ["o’clock","～時","🕐","It is three o'clock."],
+      ["netball","ネットボール","🏐","They play netball after school."],
+      ["time","時刻","⏰","What time is it?"],
+      ["afternoon","午後","🌤️","I study in the afternoon."],
+      ["sport(s)","スポーツ","🏅","Soccer is my favorite sport."],
+      ["a.m.","午前","🌅","School starts at 8 a.m."],
+      ["p.m.","午後","🌇","I go home at 5 p.m."],
+      ["basketball","バスケットボール","🏀","I play basketball."],
+      ["Sounds ...","～そうですね。","👂","Sounds good!"],
+      ["front","前、正面","⬆️","Stand in front of the door."],
+      ["be","～である、～になる","✨","I want to be a teacher."],
+      ["nervous","緊張して","😰","I am nervous today."],
+      ["worry","心配する、悩む","😟","Don't worry."],
+      ["yourself","あなた自身を[に]","🪞","Please introduce yourself."],
+      ["sheep","ヒツジ","🐑","There are many sheep."],
+      ["kiwi(s)","キーウィ","🥝","Kiwis live in New Zealand."],
+      ["right","正しい、正確な","✅","Your answer is right."],
+      ["turn","順番、番","🔄","It's your turn."],
+      ["please","どうぞ、お願いします","🙏","Please sit down."],
+      ["look","見る、目を向ける","👀","Look over there."],
+      ["enjoy oneself","楽しむ、楽しく過ごす","🎉","Enjoy yourself!"],
+      ["look at","～を見る","🔎","Look at this picture."]
+    ]}
+  }},
+  nh2:{label:"Grade 8",title:"NH2 Units",units:{1:null,2:null,3:null,4:null}},
+  nh3:{label:"Grade 9",title:"NH3 Units",units:{1:null,2:null,3:null,4:null}}
+};
