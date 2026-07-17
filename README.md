@@ -1,2 +1,3 @@
-# altmoe.github.io
-NH1 Unit 1 ~ 10 Vocabularies(単語)
+# NH English Learning Portal — Phase 1
+
+Grade folders, unit folders, and reusable games. NH1 Unit 4 is currently active. NH3 Unit 1 will be added next.

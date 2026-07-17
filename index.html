@@ -1,85 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NH1 Unit 4 Vocabularies (単語)</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NH English Learning Portal</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <div>
-      <h1>NH1 Unit 4 Vocabularies <span>(単語)</span></h1>
-      <p>Learn English vocabulary through flashcards and games.</p>
-    </div>
-    <div class="header-actions">
-      <div class="xp-pill">⭐ <span id="xpValue">0</span> XP</div>
-      <button id="soundBtn" class="icon-btn" aria-label="Toggle sound">🔊</button>
-      <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">☀️</button>
-    </div>
-  </header>
+<header>
+  <button id="logo" class="logo">📚 <span>NH English Learning Portal<small>New Horizon Vocabulary Practice</small></span></button>
+  <div class="tools"><span class="xp">⭐ <b id="xp">0</b> XP</span><button id="theme">☀️</button></div>
+</header>
 
-  <nav class="mode-nav" aria-label="Game modes">
-    <button class="mode-btn active" data-mode="flashcards">Flashcards / フラッシュカード</button>
-    <button class="mode-btn" data-mode="quiz">Quiz / クイズ</button>
-    <button class="mode-btn" data-mode="matching">Matching / マッチング</button>
-    <button class="mode-btn" data-mode="memory">Memory / メモリー</button>
+<main>
+<section id="home" class="view active">
+  <div class="hero"><div><p class="eyebrow">CHOOSE YOUR GRADE</p><h1>Welcome to the NH English Learning Portal</h1><p>Select a grade, then choose a unit.</p></div><div class="bigicon">🎓</div></div>
+  <div class="grades">
+    <button class="grade blue" data-grade="nh1"><span>📘</span><div><small>Grade 7</small><h2>NH1</h2><p>Junior High School Year 1</p></div><b>→</b></button>
+    <button class="grade green" data-grade="nh2"><span>📗</span><div><small>Grade 8</small><h2>NH2</h2><p>Junior High School Year 2</p></div><b>→</b></button>
+    <button class="grade red" data-grade="nh3"><span>📕</span><div><small>Grade 9</small><h2>NH3</h2><p>Junior High School Year 3</p></div><b>→</b></button>
+  </div>
+</section>
+
+<section id="units" class="view">
+  <button class="back" id="backHome">← Home</button>
+  <div class="title"><div><p class="eyebrow" id="gradeLabel"></p><h1 id="gradeTitle"></h1><p>Choose a unit to study.</p></div><div class="bigicon">📁</div></div>
+  <div id="unitGrid" class="units"></div>
+</section>
+
+<section id="study" class="view">
+  <button class="back" id="backUnits">← Units</button>
+  <div class="studyhead"><div><p class="eyebrow" id="studyLabel"></p><h1 id="studyTitle"></h1><p>Tap a card to see the Japanese meaning.</p></div><div class="stats"><span><small>Words</small><b id="wordCount">0</b></span><span><small>Studied</small><b id="studiedCount">0</b></span></div></div>
+  <div class="progress"><div><b>Unit progress</b><span id="progressText"></span></div><div class="track"><i id="bar"></i></div></div>
+  <nav>
+    <button class="mode active" data-mode="cards">🃏 Flashcards<small>フラッシュカード</small></button>
+    <button class="mode" data-mode="quiz">🎯 Quiz<small>クイズ</small></button>
+    <button class="mode" data-mode="match">🔗 Matching<small>マッチング</small></button>
   </nav>
+  <section id="cards" class="game active"><div class="gamehead"><div><h2>Flip Flashcards</h2><p>All words are shown at once.</p></div><button id="shuffle">🔀 Shuffle</button></div><div id="cardsGrid" class="cards"></div></section>
+  <section id="quiz" class="game"><div class="panel"><div class="row"><span id="qnum"></span><span id="qscore"></span></div><p class="hint">Choose the correct English word.</p><h2 id="qprompt"></h2><div id="choices" class="choices"></div><p id="feedback"></p><button id="next" class="hidden">Next →</button></div></section>
+  <section id="match" class="game"><div class="panel"><div class="row"><span>Match English and Japanese</span><span id="mcount">0 / 6</span></div><div id="matchBoard" class="match"></div><button id="newMatch">New Round</button></div></section>
+</section>
+</main>
 
-  <main>
-    <section id="flashcards" class="mode-section active">
-      <div class="section-head">
-        <div>
-          <h2>Flip Vocabulary Flashcards</h2>
-          <p>Tap a card to reveal the Japanese meaning.</p>
-        </div>
-        <button id="shuffleBtn" class="primary-btn">🔀 Shuffle / シャッフル</button>
-      </div>
-      <div id="flashcardGrid" class="flashcard-grid"></div>
-    </section>
-
-    <section id="quiz" class="mode-section">
-      <div class="game-panel">
-        <div class="progress-row">
-          <span id="quizProgress">1 / 10</span>
-          <span id="quizScore">Score: 0</span>
-        </div>
-        <div id="quizPrompt" class="quiz-prompt"></div>
-        <div id="quizChoices" class="choice-grid"></div>
-        <div id="quizFeedback" class="feedback"></div>
-        <button id="quizNextBtn" class="primary-btn hidden">Next / 次へ</button>
-      </div>
-    </section>
-
-    <section id="matching" class="mode-section">
-      <div class="game-panel">
-        <div class="progress-row">
-          <span>Match English and Japanese</span>
-          <span id="matchProgress">0 / 6</span>
-        </div>
-        <div id="matchingBoard" class="matching-board"></div>
-        <button id="newMatchingBtn" class="secondary-btn">New Round / 新しいラウンド</button>
-      </div>
-    </section>
-
-    <section id="memory" class="mode-section">
-      <div class="game-panel">
-        <div class="progress-row">
-          <span>Find all matching pairs</span>
-          <span id="memoryProgress">0 / 6</span>
-        </div>
-        <div id="memoryBoard" class="memory-board"></div>
-        <button id="newMemoryBtn" class="secondary-btn">New Round / 新しいラウンド</button>
-      </div>
-    </section>
-  </main>
-
-  <div id="celebration" class="celebration" aria-hidden="true"></div>
-
-  <footer>
-    <p>Made for English learning · Progress is saved on this device.</p>
-  </footer>
-
-  <script src="script.js"></script>
+<footer>Made for classroom learning · Progress is saved on this device</footer>
+<script src="data.js"></script><script src="script.js"></script>
 </body>
 </html>

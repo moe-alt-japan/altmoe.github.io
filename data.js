@@ -1,0 +1,6 @@
+const PORTAL_DATA={
+nh1:{label:"Grade 7",title:"NH1 Units",units:{
+1:null,2:null,3:null,
+4:{title:"NH1 Unit 4",subtitle:"New Zealand and Time",words:[
+["New Zealand","ニュージーランド","🇳🇿"],["puppy, puppies","子イヌ","🐶"],["of","～の","🔗"],["someday","いつか","🌅"],["lot","[a lotまたはlotsで]たくさん","📦"],["they","彼らは、彼女らは","👥"],["animal(s)","動物","🐾"],["visit","～を訪ねる","✈️"],["Japan","日本","🇯🇵"],["many","たくさんの、多くの","👨‍👩‍👧‍👦"],["one of","～の1つ[1人]","1️⃣"],["a lot of","たくさんの、多数の","📚"],["How many ...?","どれくらい多くの、いくつの","❓"],["they’re","⇐ they are","💬"],["noon","正午、真昼","☀️"],["last","最後の、最終の","🏁"],["like","～のような","👍"],["o’clock","～時","🕐"],["netball","ネットボール","🏐"],["time","時刻","⏰"],["afternoon","午後","🌤️"],["sport(s)","スポーツ","🏅"],["a.m.","午前","🌅"],["p.m.","午後","🌇"],["basketball","バスケットボール","🏀"],["Sounds ...","～そうですね。","👂"],["front","前、正面","⬆️"],["be","～である、～になる","✨"],["nervous","緊張して","😰"],["worry","心配する、悩む","😟"],["yourself","あなた自身を[に]","🪞"],["sheep","ヒツジ","🐑"],["kiwi(s)","キーウィ","🥝"],["right","正しい、正確な","✅"],["turn","順番、番","🔄"],["please","どうぞ、お願いします","🙏"],["look","見る、目を向ける","👀"],["enjoy oneself","楽しむ、楽しく過ごす","🎉"],["look at","～を見る","🔎"]
+]}}},nh2:{label:"Grade 8",title:"NH2 Units",units:{1:null,2:null,3:null,4:null}},nh3:{label:"Grade 9",title:"NH3 Units",units:{1:null,2:null,3:null,4:null}}};
