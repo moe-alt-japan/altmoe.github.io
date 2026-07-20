@@ -23,12 +23,46 @@
 
 <main>
 <section id="homeView" class="view active">
-  <div class="hero">
+  <div class="dashboard-hero">
     <div>
-      <p class="eyebrow">CHOOSE YOUR GRADE</p>
-      <h1>Welcome to NH Interactive</h1>
-      <p>Choose a textbook and start learning.</p>
+      <p class="eyebrow">YOUR LEARNING DASHBOARD</p>
+      <h1 id="dashboardGreeting">Welcome back!</h1>
+      <p>Keep your streak alive and continue building your English power.</p>
+      <div class="dashboard-actions">
+        <button id="continueBtn" class="primary-btn">▶ Continue Learning</button>
+        <button id="browseBooksBtn" class="secondary-btn">📚 Browse Textbooks</button>
+      </div>
     </div>
+    <div class="level-orb"><span>LEVEL</span><b id="dashboardLevel">1</b><small id="dashboardXP">0 XP</small></div>
+  </div>
+
+  <div class="dashboard-stat-grid">
+    <article class="dashboard-stat"><span>🔥</span><div><small>Study Streak</small><b><span id="dashboardStreak">1</span> days</b></div></article>
+    <article class="dashboard-stat"><span>📖</span><div><small>Words Studied</small><b id="dashboardWords">0</b></div></article>
+    <article class="dashboard-stat"><span>🎯</span><div><small>Correct Answers</small><b id="dashboardCorrect">0</b></div></article>
+    <article class="dashboard-stat"><span>🏆</span><div><small>Achievements</small><b><span id="dashboardAchievementCount">0</span> / 8</b></div></article>
+  </div>
+
+  <div class="dashboard-grid">
+    <section class="dashboard-panel continue-panel">
+      <div class="panel-title"><div><p class="eyebrow">PICK UP WHERE YOU LEFT OFF</p><h2>Continue Learning</h2></div><span class="panel-icon">🚀</span></div>
+      <div id="continueCard" class="continue-card"><p>No recent unit yet.</p><small>Choose a textbook below to begin.</small></div>
+    </section>
+
+    <section class="dashboard-panel mission-panel">
+      <div class="panel-title"><div><p class="eyebrow">DAILY CHALLENGE</p><h2>Today’s Missions</h2></div><span class="panel-icon">✅</span></div>
+      <div id="missionList" class="mission-list"></div>
+      <div class="mission-reward">Complete all missions: <b>+100 XP</b></div>
+    </section>
+  </div>
+
+  <section class="dashboard-panel achievements-panel">
+    <div class="panel-title"><div><p class="eyebrow">YOUR TROPHY CASE</p><h2>Achievements</h2></div><span class="panel-icon">🏅</span></div>
+    <div id="achievementGrid" class="achievement-grid"></div>
+  </section>
+
+  <div id="textbookSection" class="textbook-heading">
+    <div><p class="eyebrow">CHOOSE YOUR GRADE</p><h2>New Horizon Textbooks</h2><p>Choose a textbook and start learning.</p></div>
     <div class="hero-icon">🎓</div>
   </div>
 
@@ -208,7 +242,7 @@
 </section>
 </main>
 
-<footer>NH Interactive v1.3 · Made for classroom learning · Progress is saved on this device</footer>
+<footer>NH Interactive v1.4 · Made for classroom learning · Progress is saved on this device</footer>
 <div id="toast" class="toast"></div>
 <script src="data.js"></script>
 <script src="script.js"></script>

@@ -13,12 +13,24 @@ const colors=["#ffdada","#dcecff","#e3f4db","#fff0c8","#eadcff","#d9f3ef","#ffe2
 function showView(id){document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));$(id).classList.add("active")}
 function saveSets(){localStorage.setItem(`studied-${grade}-${unit}`,JSON.stringify([...studied]));localStorage.setItem(`favorites-${grade}-${unit}`,JSON.stringify([...favorites]));localStorage.setItem(`wrong-${grade}-${unit}`,JSON.stringify([...wrong]))}
 function loadSets(){studied=new Set(JSON.parse(localStorage.getItem(`studied-${grade}-${unit}`)||"[]"));favorites=new Set(JSON.parse(localStorage.getItem(`favorites-${grade}-${unit}`)||"[]"));wrong=new Set(JSON.parse(localStorage.getItem(`wrong-${grade}-${unit}`)||"[]"))}
-function addXP(n){xp+=n;localStorage.setItem("portalXP",xp);updateStats();toast(`+${n} XP`)}
+function addXP(n){
+  xp+=n;
+  localStorage.setItem("portalXP",xp);
+  const today=getTodayKey();
+  const daily=getDailyData(today);daily.correct++;saveDailyData(today,daily);
+  localStorage.setItem("portalCorrect",Number(localStorage.getItem("portalCorrect")||0)+1);
+  updateStats();toast(`+${n} XP`);renderDashboard();
+}
 function updateStats(){$("xpValue").textContent=xp;$("levelValue").textContent=Math.floor(xp/250)+1;$("studiedCount").textContent=studied.size;$("favoriteCount").textContent=favorites.size;$("wrongCount").textContent=wrong.size;$("progressText").textContent=`${studied.size} of ${words.length} words studied`;$("progressBar").style.width=`${words.length?studied.size/words.length*100:0}%`}
 function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1100)}
 function speak(text){if(!window.speechSynthesis||$("soundBtn").dataset.off==="1")return;const u=new SpeechSynthesisUtterance(text);u.lang="en-US";speechSynthesis.cancel();speechSynthesis.speak(u)}
 function wordKey(w){return typeof w==="string"?w:en(w)}
-function markStudied(w){studied.add(wordKey(w));saveSets();updateStats()}
+function markStudied(w){
+  const key=wordKey(w),wasNew=!studied.has(key);
+  studied.add(key);saveSets();updateStats();
+  if(wasNew){const today=getTodayKey();const daily=getDailyData(today);daily.words++;saveDailyData(today,daily);}
+  renderDashboard();
+}
 function markWrong(w){wrong.add(wordKey(w));saveSets();updateStats()}
 function clearWrongWord(w){wrong.delete(wordKey(w));saveSets();updateStats()}
 
@@ -34,7 +46,7 @@ function updateStreak(){
   }
   $("streakValue").textContent=streak||1;
 }
-function goHome(){showView("homeView")}
+function goHome(){showView("homeView");renderDashboard()}
 function openGrade(g){
   grade=g;
   const d=PORTAL_DATA[g];
@@ -62,6 +74,7 @@ function openGrade(g){
 function openContent(d,label){
   unit=label;
   words=d.words||[];
+  localStorage.setItem("portalRecent",JSON.stringify({grade,label,title:d.title,subtitle:d.subtitle||"",wordCount:words.length}));
   loadSets();
   $("studyLabel").textContent=`${PORTAL_DATA[grade].title} · ${label}`;
   $("studyTitle").textContent=d.title;
@@ -114,7 +127,9 @@ function applyFilters(){
   renderFlashcards(result,$("flashcardGrid"));
 }
 
-function switchMode(id){document.querySelectorAll(".mode-btn").forEach(b=>b.classList.toggle("active",b.dataset.mode===id));document.querySelectorAll(".game").forEach(g=>g.classList.toggle("active",g.id===id));if(id==="quiz")startQuiz();if(id==="spelling")startSpelling();if(id==="matching")startMatching();if(id==="memory")startMemory();if(id==="hangman")startHangman();if(id==="fillblank")startFill();if(id==="favorites")renderFlashcards(words.filter(w=>favorites.has(en(w))),$("favoriteGrid"));if(id==="wrong")renderFlashcards(words.filter(w=>wrong.has(en(w))),$("wrongGrid"))}
+function switchMode(id){
+  if(id!=="flashcards"&&grade&&unit){const today=getTodayKey();const daily=getDailyData(today);daily.games++;saveDailyData(today,daily);}
+  document.querySelectorAll(".mode-btn").forEach(b=>b.classList.toggle("active",b.dataset.mode===id));document.querySelectorAll(".game").forEach(g=>g.classList.toggle("active",g.id===id));if(id==="quiz")startQuiz();if(id==="spelling")startSpelling();if(id==="matching")startMatching();if(id==="memory")startMemory();if(id==="hangman")startHangman();if(id==="fillblank")startFill();if(id==="favorites")renderFlashcards(words.filter(w=>favorites.has(en(w))),$("favoriteGrid"));if(id==="wrong")renderFlashcards(words.filter(w=>wrong.has(en(w))),$("wrongGrid"));renderDashboard()}
 
 function startQuiz(){quizItems=shuffle(words).slice(0,Math.min(10,words.length));quizIndex=0;quizScore=0;renderQuiz()}
 function renderQuiz(){const c=quizItems[quizIndex];if(!c){$("quizPrompt").textContent=`Finished! ${quizScore} / ${quizItems.length}`;$("quizChoices").innerHTML="";$("quizFeedback").textContent="Great job!";$("quizNextBtn").classList.add("hidden");return}$("quizProgress").textContent=`Question ${quizIndex+1} / ${quizItems.length}`;$("quizScore").textContent=`Score: ${quizScore}`;$("quizPrompt").textContent=jp(c);$("quizFeedback").textContent="";$("quizNextBtn").classList.add("hidden");$("quizChoices").innerHTML="";const opts=shuffle([c,...shuffle(words.filter(x=>en(x)!==en(c))).slice(0,3)]);opts.forEach(o=>{const b=document.createElement("button");b.className="choice";b.textContent=en(o);b.onclick=()=>{document.querySelectorAll("#quizChoices .choice").forEach(x=>x.disabled=true);if(en(o)===en(c)){b.classList.add("correct");quizScore++;addXP(10);markStudied(c);clearWrongWord(c);$("quizFeedback").textContent="Correct! 正解！";speak(en(c))}else{b.classList.add("wrong");markWrong(c);$("quizFeedback").textContent=`Answer: ${en(c)}`}$("quizScore").textContent=`Score: ${quizScore}`;$("quizNextBtn").classList.remove("hidden")};$("quizChoices").appendChild(b)})}
@@ -137,8 +152,66 @@ function renderFill(){const c=fillItems[fillIndex];if(!c){$("fillPrompt").textCo
 function checkFill(){const c=fillItems[fillIndex];if(!c)return;const ok=norm($("fillInput").value)===norm(en(c));$("fillInput").disabled=true;$("fillCheckBtn").disabled=true;if(ok){fillScore++;addXP(12);markStudied(c);clearWrongWord(c);$("fillFeedback").textContent="Correct! 正解！"}else{markWrong(c);$("fillFeedback").textContent=`Answer: ${en(c)}`}$("fillScore").textContent=`Score: ${fillScore}`;$("fillNextBtn").classList.remove("hidden")}
 
 
+function getTodayKey(){return new Date().toISOString().slice(0,10)}
+function getDailyData(key=getTodayKey()){
+  try{return Object.assign({words:0,correct:0,games:0,reward:false},JSON.parse(localStorage.getItem(`portalDaily-${key}`)||"{}"))}
+  catch{return {words:0,correct:0,games:0,reward:false}}
+}
+function saveDailyData(key,data){localStorage.setItem(`portalDaily-${key}`,JSON.stringify(data))}
+function allStudiedWords(){
+  const unique=new Set();
+  Object.keys(localStorage).filter(k=>k.startsWith("studied-")).forEach(k=>{try{JSON.parse(localStorage.getItem(k)||"[]").forEach(x=>unique.add(x))}catch{}});
+  return unique.size;
+}
+function totalFavorites(){
+  const unique=new Set();
+  Object.keys(localStorage).filter(k=>k.startsWith("favorites-")).forEach(k=>{try{JSON.parse(localStorage.getItem(k)||"[]").forEach(x=>unique.add(x))}catch{}});
+  return unique.size;
+}
+function achievementData(){
+  const streak=Number(localStorage.getItem("portalStreak")||1),total=allStudiedWords(),correct=Number(localStorage.getItem("portalCorrect")||0);
+  const opened=new Set();
+  Object.keys(localStorage).filter(k=>k.startsWith("studied-")).forEach(k=>{try{if(JSON.parse(localStorage.getItem(k)||"[]").length)opened.add(k.split("-")[1])}catch{}});
+  return [
+    {icon:"🃏",name:"First Flip",desc:"Study your first word",ok:total>=1},
+    {icon:"⭐",name:"100 XP",desc:"Earn 100 experience points",ok:xp>=100},
+    {icon:"📚",name:"Word Explorer",desc:"Study 50 different words",ok:total>=50},
+    {icon:"🎯",name:"Quiz Hero",desc:"Get 25 correct answers",ok:correct>=25},
+    {icon:"🔥",name:"On Fire",desc:"Reach a 3-day streak",ok:streak>=3},
+    {icon:"❤️",name:"Collector",desc:"Save 10 favorite words",ok:totalFavorites()>=10},
+    {icon:"🌈",name:"All Grades",desc:"Study from NH1, NH2, and NH3",ok:opened.size>=3},
+    {icon:"👑",name:"Vocabulary King",desc:"Study 500 different words",ok:total>=500}
+  ];
+}
+function claimDailyReward(data){
+  if(data.reward||data.words<10||data.correct<5||data.games<1)return data;
+  data.reward=true;xp+=100;localStorage.setItem("portalXP",xp);saveDailyData(getTodayKey(),data);toast("Daily missions complete! +100 XP");return data;
+}
+function renderDashboard(){
+  if(!$("dashboardLevel"))return;
+  const hour=new Date().getHours(),greeting=hour<12?"Good morning!":hour<18?"Good afternoon!":"Good evening!";
+  $("dashboardGreeting").textContent=greeting;
+  $("dashboardLevel").textContent=Math.floor(xp/250)+1;$("dashboardXP").textContent=`${xp} XP`;
+  $("dashboardStreak").textContent=Number(localStorage.getItem("portalStreak")||1);
+  $("dashboardWords").textContent=allStudiedWords();$("dashboardCorrect").textContent=Number(localStorage.getItem("portalCorrect")||0);
+  const achievements=achievementData();$("dashboardAchievementCount").textContent=achievements.filter(a=>a.ok).length;
+  $("achievementGrid").innerHTML=achievements.map(a=>`<article class="achievement ${a.ok?"unlocked":""}"><div class="achievement-icon">${a.ok?a.icon:"🔒"}</div><b>${a.name}</b><small>${a.desc}</small></article>`).join("");
+  let daily=claimDailyReward(getDailyData());
+  const missions=[{icon:"📖",name:"Study 10 words",value:daily.words,target:10},{icon:"🎯",name:"Get 5 correct answers",value:daily.correct,target:5},{icon:"🎮",name:"Play one game",value:daily.games,target:1}];
+  $("missionList").innerHTML=missions.map(m=>`<div class="mission-item ${m.value>=m.target?"done":""}"><span class="mission-check">${m.value>=m.target?"✓":m.icon}</span><span class="mission-copy"><b>${m.name}</b><small>${Math.min(m.value,m.target)} of ${m.target}</small></span><span class="mission-progress">${Math.min(100,Math.round(m.value/m.target*100))}%</span></div>`).join("");
+  const reward=document.querySelector(".mission-reward");reward.classList.toggle("claimed",daily.reward);reward.innerHTML=daily.reward?"✅ Daily reward claimed: <b>+100 XP</b>":"Complete all missions: <b>+100 XP</b>";
+  let recent=null;try{recent=JSON.parse(localStorage.getItem("portalRecent")||"null")}catch{}
+  if(recent){
+    const key=`studied-${recent.grade}-${recent.label}`,count=JSON.parse(localStorage.getItem(key)||"[]").length,pct=recent.wordCount?Math.round(count/recent.wordCount*100):0;
+    $("continueCard").innerHTML=`<h3>${recent.title}</h3><p>${PORTAL_DATA[recent.grade]?.title||""} · ${recent.label}</p><div class="progress-track"><i style="width:${pct}%"></i></div><p>${count} of ${recent.wordCount} words studied · ${pct}%</p><button id="resumeRecentBtn" class="primary-btn">Continue →</button>`;
+    $("resumeRecentBtn").onclick=()=>{const d=recent.label.startsWith("Unit ")?PORTAL_DATA[recent.grade].units[recent.label.replace("Unit ","")]:[...(PORTAL_DATA[recent.grade].extras||[])].find(x=>x.title===recent.label);if(d){grade=recent.grade;openContent(d,recent.label)}};
+    $("continueBtn").disabled=false;$("continueBtn").onclick=$("resumeRecentBtn").onclick;
+  }else{$("continueBtn").disabled=true;$("continueBtn").onclick=()=>$("textbookSection").scrollIntoView({behavior:"smooth"})}
+}
+
+
 document.querySelectorAll(".grade-card").forEach(b=>b.onclick=()=>openGrade(b.dataset.grade));
-$("logoBtn").onclick=goHome;$("backHomeBtn").onclick=goHome;$("backUnitsBtn").onclick=()=>openGrade(grade);
+$("logoBtn").onclick=goHome;$("browseBooksBtn").onclick=()=>$("textbookSection").scrollIntoView({behavior:"smooth"});$("backHomeBtn").onclick=goHome;$("backUnitsBtn").onclick=()=>openGrade(grade);
 document.querySelectorAll(".mode-btn").forEach(b=>b.onclick=()=>switchMode(b.dataset.mode));
 $("shuffleCardsBtn").onclick=()=>renderFlashcards(shuffle(words),$("flashcardGrid"));
 $("quizNextBtn").onclick=()=>{quizIndex++;renderQuiz()};
@@ -157,3 +230,4 @@ $("resetProgressBtn").onclick=()=>{if(!confirm("Reset studied, favorites, and wr
 $("clearFiltersBtn").onclick=()=>{$("wordSearch").value="";$("categoryFilter").value="all";$("sectionFilter").value="all";applyFilters()};
 updateStreak();
 updateStats();
+renderDashboard();

@@ -1,37 +1,47 @@
-# NH Interactive v1.3
+# NH Interactive v1.4
 
 **Learn. Play. Improve.**
 
-## What is new in v1.3
-- Fixed and bundled all three New Horizon textbook covers.
-- Added an English → Japanese / Japanese → English flashcard direction switch.
-- Added a section filter for Part 1, Part 2, Part 3, and other lesson sections.
-- Added a daily study streak indicator.
-- Added a Reset Unit button for clearing one unit’s studied, favorite, and wrong-answer data.
-- Improved flashcard labels so both word type and lesson section are visible.
-- Fixed progress recording in Matching and Memory modes.
-- Improved keyboard focus and responsive layouts.
+## What is new in v1.4
+
+- New student learning dashboard
+- Continue Learning card for the most recently opened lesson
+- Daily missions with a 100 XP completion reward
+- Lifetime statistics for words studied and correct answers
+- Eight unlockable achievements
+- Dashboard greeting, level display, streak, XP, and progress overview
+- Responsive dashboard layout for computers, tablets, and phones
+
+## Existing learning modes
+
+- Flashcards with English ↔ Japanese direction switching
+- Quiz
+- Spelling
+- Matching
+- Memory
+- Speed Round
+- Hangman
+- Fill in the Blank
+- Favorites
+- Wrong Answer Review
 
 ## Complete textbook structure
+
 - New Horizon 1: Units 1–10
 - New Horizon 2: Units 1–7
 - New Horizon 3: Units 1–6
+- Real Life English lessons and special readings/stories
+- More than 1,500 vocabulary entries
 
-## Included vocabulary
-- NH1: 608 entries
-- NH2: 509 entries
-- NH3: 417 entries
-- Total: 1,534 entries
+## Uploading to GitHub
 
-## GitHub upload
-1. Extract the ZIP.
-2. Upload every file to the repository root.
-3. Allow GitHub to replace the old files.
-4. Keep the textbook-cover filenames exactly as shown:
-   - `new-horizon-1.png`
-   - `new-horizon-2.png`
-   - `new-horizon-3.png`
+1. Extract `NH-Interactive-v1.4.zip`.
+2. Upload every extracted file to the root of the GitHub repository.
+3. Allow GitHub to replace the older versions.
+4. Keep the three textbook cover PNG files in the same folder as `index.html`.
 
-Suggested commit title:
+Recommended commit message:
 
-`Release NH Interactive v1.3`
+`Release NH Interactive v1.4 student dashboard update`
+
+Progress, XP, missions, achievements, streaks, and recent lessons are stored in the browser using local storage.
