@@ -34,3 +34,9 @@ Commit message:
 - Renamed the grade cards to **New Horizon 1, 2, and 3**
 - Added the uploaded textbook cover images to the homepage
 - Added responsive styling for desktop, tablet, and mobile
+
+
+## Navigation update
+- Enlarged the Home button
+- Added the Japanese label: ホーム
+- Added clearer button styling and hover feedback

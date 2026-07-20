@@ -84,3 +84,32 @@ footer{text-align:center;color:var(--muted);padding:25px}
     height:190px;
   }
 }
+
+
+/* Larger bilingual Home navigation button */
+.home-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-height:52px;
+  padding:12px 20px;
+  margin-bottom:22px;
+  border:1px solid rgba(47,115,255,.25);
+  border-radius:15px;
+  background:rgba(255,255,255,.72);
+  color:#2f73ff;
+  font-size:1.2rem;
+  font-weight:800;
+  line-height:1;
+  box-shadow:0 6px 16px rgba(47,115,255,.10);
+}
+.home-btn:hover{
+  background:#eef6ff;
+  transform:translateY(-2px);
+  box-shadow:0 9px 20px rgba(47,115,255,.16);
+}
+.home-btn:active{transform:translateY(0)}
+.home-divider{opacity:.45;font-weight:500}
+@media(max-width:520px){
+  .home-btn{font-size:1.08rem;padding:11px 16px;min-height:48px}
+}
