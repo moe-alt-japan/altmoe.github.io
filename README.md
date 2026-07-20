@@ -1,18 +1,61 @@
-# NH Interactive v1.5 — Adventure Update
+# NH Interactive v1.4.1
 
-## New in v1.5
-- Playable English Adventure Mode
-- School, Forest, and Castle worlds
-- Four stages per world, including a boss battle
-- World and stage unlocking
-- Coins saved on each device
-- Battle HP, attacks, correct-answer damage, and retry system
-- Adventure progress saved with localStorage
-- Existing multilingual interface, dashboard, games, XP, achievements, and textbook vocabulary preserved
+**Learn. Play. Improve.**
 
-## GitHub upload
-Upload all files in this ZIP to the repository root and replace the older files.
+## What is new in v1.4
 
-Suggested commit message:
+- New student learning dashboard
+- Continue Learning card for the most recently opened lesson
+- Daily missions with a 100 XP completion reward
+- Lifetime statistics for words studied and correct answers
+- Eight unlockable achievements
+- Dashboard greeting, level display, streak, XP, and progress overview
+- Responsive dashboard layout for computers, tablets, and phones
 
-`Release NH Interactive v1.5 adventure update`
+## Existing learning modes
+
+- Flashcards with English ↔ Japanese direction switching
+- Quiz
+- Spelling
+- Matching
+- Memory
+- Speed Round
+- Hangman
+- Fill in the Blank
+- Favorites
+- Wrong Answer Review
+
+## Complete textbook structure
+
+- New Horizon 1: Units 1–10
+- New Horizon 2: Units 1–7
+- New Horizon 3: Units 1–6
+- Real Life English lessons and special readings/stories
+- More than 1,500 vocabulary entries
+
+## Uploading to GitHub
+
+1. Extract `NH-Interactive-v1.4.zip`.
+2. Upload every extracted file to the root of the GitHub repository.
+3. Allow GitHub to replace the older versions.
+4. Keep the three textbook cover PNG files in the same folder as `index.html`.
+
+Recommended commit message:
+
+`Release NH Interactive v1.4 student dashboard update`
+
+Progress, XP, missions, achievements, streaks, and recent lessons are stored in the browser using local storage.
+
+
+## v1.4.1 Multilingual Interface
+- First-launch language selection screen
+- English, Japanese, and bilingual interface modes
+- Bilingual mode is recommended for Japanese junior high school students
+- Language preference is saved in the browser
+- Language can be changed anytime with the globe button
+
+
+## v1.5.1 Battle flow fix
+- Fixed Adventure Mode freezing after a correct answer.
+- Removed a call to an undefined daily-progress function.
+- Battle questions now advance automatically after feedback.

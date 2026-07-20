@@ -295,7 +295,24 @@ function renderStages(){const cleared=adventureProgress[activeWorld]||0;$("stage
 function startAdventureBattle(stage,boss){battleIsBoss=boss;battleIndex=0;playerHealth=100;enemyHealth=boss?150:100;const pool=shuffle(getWorldWords(activeWorld));battleWords=pool.slice(0,boss?10:5);$("stagePanel").classList.add("hidden");$("battlePanel").classList.remove("hidden");const w=ADVENTURE_WORLDS.find(x=>x.id===activeWorld);$("bossArt").textContent=boss?w.bossIcon:"👾";$("enemyName").textContent=boss?w.boss:w.enemy;$("battleStageLabel").textContent=boss?"FINAL BOSS / 最終ボス":`STAGE ${stage} / ステージ ${stage}`;$("battleTitle").textContent=boss?`${w.boss} Battle`:`${w.enemy} Battle`;$("battlePanel").dataset.stage=stage;renderBattleQuestion();updateBattleBars();}
 function updateBattleBars(){$("playerHP").style.width=`${Math.max(0,playerHealth)}%`;$ ("enemyHP").style.width=`${Math.max(0,Math.min(100,enemyHealth/(battleIsBoss?150:100)*100))}%`;}
 function renderBattleQuestion(){if(enemyHealth<=0)return finishBattle(true);if(playerHealth<=0||battleIndex>=battleWords.length)return finishBattle(false);const current=battleWords[battleIndex],choices=shuffle([current,...shuffle(getWorldWords(activeWorld).filter(x=>x.english!==current.english)).slice(0,3)]);$("battlePrompt").textContent=current.japanese;$("battleFeedback").textContent="";$("battleChoices").innerHTML="";choices.forEach(c=>{const b=document.createElement("button");b.className="choice";b.textContent=c.english;b.onclick=()=>answerBattle(b,c.english===current.english,current);$("battleChoices").appendChild(b);});}
-function answerBattle(btn,correct,word){document.querySelectorAll("#battleChoices .choice").forEach(b=>b.disabled=true);if(correct){btn.classList.add("correct");enemyHealth-=battleIsBoss?18:25;$("battleFeedback").textContent=battleIsBoss?"⚔️ Critical Hit!":"⚔️ Great attack!";addXP(10);incrementDaily("correct",1);markStudied(word);}else{btn.classList.add("wrong");playerHealth-=25;$("battleFeedback").textContent=`💥 The answer was ${word.english}.`;markWrong(word);}battleIndex++;updateBattleBars();setTimeout(renderBattleQuestion,800);}
+function answerBattle(btn,correct,word){
+  document.querySelectorAll("#battleChoices .choice").forEach(b=>b.disabled=true);
+  if(correct){
+    btn.classList.add("correct");
+    enemyHealth-=battleIsBoss?18:25;
+    $("battleFeedback").textContent=battleIsBoss?"⚔️ Critical Hit!":"⚔️ Great attack!";
+    addXP(10);
+    markStudied(word);
+  }else{
+    btn.classList.add("wrong");
+    playerHealth-=25;
+    $("battleFeedback").textContent=`💥 The answer was ${word.english}.`;
+    markWrong(word);
+  }
+  battleIndex++;
+  updateBattleBars();
+  window.setTimeout(()=>renderBattleQuestion(),900);
+}
 function finishBattle(win){if(win){const stage=Number($("battlePanel").dataset.stage),reward=battleIsBoss?100:30;adventureCoins+=reward;adventureProgress[activeWorld]=Math.max(adventureProgress[activeWorld]||0,stage);saveAdventure();$("battlePrompt").textContent=battleIsBoss?"🏆 BOSS DEFEATED!":"🎉 STAGE CLEAR!";$("battleChoices").innerHTML=`<button class="primary-btn" id="battleContinue">Collect ${reward} coins and continue</button>`;$("battleFeedback").textContent=`You earned ${reward} coins! / ${reward}コインをゲット！`;$ ("battleContinue").onclick=()=>{renderAdventure();openAdventureWorld(activeWorld)};}else{$("battlePrompt").textContent="Try Again! / もう一度挑戦！";$("battleChoices").innerHTML='<button class="primary-btn" id="battleRetry">Retry Battle</button>';$("battleFeedback").textContent="Review the words and defeat the enemy next time.";$ ("battleRetry").onclick=()=>startAdventureBattle(Number($("battlePanel").dataset.stage),battleIsBoss);}}
 $("adventureBtn").onclick=openAdventure;$("backAdventureHomeBtn").onclick=()=>{showView("homeView");$("worldGrid").classList.remove("hidden")};$("closeWorldBtn").onclick=()=>{$("stagePanel").classList.add("hidden");$("worldGrid").classList.remove("hidden");renderAdventure()};$("battleExitBtn").onclick=()=>{openAdventureWorld(activeWorld)};
 renderAdventure();
