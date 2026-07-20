@@ -231,3 +231,39 @@ $("clearFiltersBtn").onclick=()=>{$("wordSearch").value="";$("categoryFilter").v
 updateStreak();
 updateStats();
 renderDashboard();
+/* v1.4.1 multilingual interface */
+const UI_TRANSLATIONS={
+  en:{
+    dashboardEyebrow:"YOUR LEARNING DASHBOARD",dashboardIntro:"Keep your streak alive and continue building your English power.",continue:"▶ Continue Learning",browse:"📚 Browse Textbooks",studyStreak:"Study Streak",wordsStudied:"Words Studied",correctAnswers:"Correct Answers",achievements:"Achievements",pickup:"PICK UP WHERE YOU LEFT OFF",continueTitle:"Continue Learning",daily:"DAILY CHALLENGE",missions:"Today’s Missions",reward:"Complete all missions:",trophy:"YOUR TROPHY CASE",chooseGrade:"CHOOSE YOUR GRADE",textbooks:"New Horizon Textbooks",chooseBook:"Choose a textbook and start learning.",home:"🏠 Home",unitsBack:"← Units",unitHelp:"Choose a unit, Real Life English lesson, or story.",words:"Words",studied:"Studied",favorites:"Favorites",wrong:"Wrong",progress:"Unit progress",flip:"Flip Flashcards",flipHelp:"Tap a card to reveal the Japanese meaning.",reset:"↺ Reset Unit",shuffle:"🔀 Shuffle",clear:"Clear"
+  },
+  ja:{
+    dashboardEyebrow:"学習ダッシュボード",dashboardIntro:"連続学習を続けて、英語力を高めましょう。",continue:"▶ 続きから学習",browse:"📚 教科書を見る",studyStreak:"連続学習",wordsStudied:"学習した単語",correctAnswers:"正解数",achievements:"実績",pickup:"前回の続き",continueTitle:"続きから学習",daily:"今日のチャレンジ",missions:"今日のミッション",reward:"全部クリアすると：",trophy:"トロフィー",chooseGrade:"学年を選ぶ",textbooks:"NEW HORIZON 教科書",chooseBook:"教科書を選んで学習を始めましょう。",home:"🏠 ホーム",unitsBack:"← 単元",unitHelp:"単元、Real Life English、または物語を選んでください。",words:"単語",studied:"学習済み",favorites:"お気に入り",wrong:"まちがい",progress:"単元の進み具合",flip:"フラッシュカード",flipHelp:"カードをタップして意味を確認しましょう。",reset:"↺ 単元をリセット",shuffle:"🔀 シャッフル",clear:"クリア"
+  }
+};
+let interfaceLanguage=localStorage.getItem("portalLanguage")||"";
+function bilingual(enText,jaText){return `<span class="en-part">${enText}</span><span class="ja-part bi-line">${jaText}</span>`}
+function setHTML(selector,html){const el=document.querySelector(selector);if(el)el.innerHTML=html}
+function setText(selector,text){const el=document.querySelector(selector);if(el)el.textContent=text}
+function applyInterfaceLanguage(){
+  const mode=interfaceLanguage||"bi",enT=UI_TRANSLATIONS.en,jaT=UI_TRANSLATIONS.ja;
+  document.documentElement.lang=mode==="ja"?"ja":"en";
+  document.body.classList.toggle("ja-only",mode==="ja");document.body.classList.toggle("en-only",mode==="en");
+  const v=k=>mode==="en"?enT[k]:mode==="ja"?jaT[k]:bilingual(enT[k],jaT[k]);
+  setHTML("#homeView .dashboard-hero .eyebrow",v("dashboardEyebrow"));setHTML("#homeView .dashboard-hero>div>p:not(.eyebrow)",v("dashboardIntro"));
+  setHTML("#continueBtn",v("continue"));setHTML("#browseBooksBtn",v("browse"));
+  const statLabels=document.querySelectorAll(".dashboard-stat small");["studyStreak","wordsStudied","correctAnswers","achievements"].forEach((k,i)=>{if(statLabels[i])statLabels[i].innerHTML=v(k)});
+  const panels=document.querySelectorAll(".dashboard-panel .panel-title");if(panels[0]){panels[0].querySelector(".eyebrow").innerHTML=v("pickup");panels[0].querySelector("h2").innerHTML=v("continueTitle")};if(panels[1]){panels[1].querySelector(".eyebrow").innerHTML=v("daily");panels[1].querySelector("h2").innerHTML=v("missions")};if(panels[2]){panels[2].querySelector(".eyebrow").innerHTML=v("trophy");panels[2].querySelector("h2").innerHTML=v("achievements")}
+  const th=document.querySelector("#textbookSection");if(th){th.querySelector(".eyebrow").innerHTML=v("chooseGrade");th.querySelector("h2").innerHTML=v("textbooks");th.querySelector("p:not(.eyebrow)").innerHTML=v("chooseBook")}
+  setHTML("#backHomeBtn",v("home"));setHTML("#backUnitsBtn",v("unitsBack"));setHTML("#unitsView .page-heading p:not(.eyebrow)",v("unitHelp"));
+  const ss=document.querySelectorAll("#studyView .stats small");["words","studied","favorites","wrong"].forEach((k,i)=>{if(ss[i])ss[i].innerHTML=v(k)});setHTML(".progress-label b",v("progress"));
+  setHTML("#flashcards .game-head h2",v("flip"));setHTML("#flashcards .game-head p",v("flipHelp"));setHTML("#resetProgressBtn",v("reset"));setHTML("#shuffleCardsBtn",v("shuffle"));setHTML("#clearFiltersBtn",v("clear"));
+  document.querySelectorAll(".mode-btn").forEach(btn=>{const small=btn.querySelector("small");if(!small)return;const raw=[...btn.childNodes].find(n=>n.nodeType===3);if(!raw)return;const enLabel=raw.textContent.trim();const jaLabel=small.textContent.trim();btn.innerHTML=mode==="en"?`${btn.textContent.trim().split(/\s/)[0]} ${enLabel}`:mode==="ja"?`${btn.textContent.trim().split(/\s/)[0]} ${jaLabel}`:`${btn.textContent.trim().split(/\s/)[0]} ${enLabel}<small>${jaLabel}</small>`});
+  document.querySelectorAll(".language-option").forEach(b=>b.classList.toggle("active",b.dataset.language===mode));
+  renderDashboard();
+}
+function chooseLanguage(lang){interfaceLanguage=lang;localStorage.setItem("portalLanguage",lang);$("languageWelcome").classList.add("hidden");$("languageSettings").classList.add("hidden");applyInterfaceLanguage();toast(lang==="ja"?"日本語に変更しました":lang==="en"?"Language changed to English":"Bilingual mode selected")}
+$("languageBtn").onclick=()=>$("languageSettings").classList.remove("hidden");$("closeLanguageSettings").onclick=()=>$("languageSettings").classList.add("hidden");
+document.querySelectorAll(".language-option").forEach(b=>b.onclick=()=>chooseLanguage(b.dataset.language));
+["languageWelcome","languageSettings"].forEach(id=>$(id).addEventListener("click",e=>{if(e.target===$(id)&&id==="languageSettings")$(id).classList.add("hidden")}));
+if(!interfaceLanguage)$("languageWelcome").classList.remove("hidden");
+applyInterfaceLanguage();

@@ -1,4 +1,4 @@
-# NH Interactive v1.4
+# NH Interactive v1.4.1
 
 **Learn. Play. Improve.**
 
@@ -45,3 +45,11 @@ Recommended commit message:
 `Release NH Interactive v1.4 student dashboard update`
 
 Progress, XP, missions, achievements, streaks, and recent lessons are stored in the browser using local storage.
+
+
+## v1.4.1 Multilingual Interface
+- First-launch language selection screen
+- English, Japanese, and bilingual interface modes
+- Bilingual mode is recommended for Japanese junior high school students
+- Language preference is saved in the browser
+- Language can be changed anytime with the globe button

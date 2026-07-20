@@ -7,6 +7,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div id="languageWelcome" class="language-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="languageWelcomeTitle">
+  <div class="language-modal">
+    <div class="language-logo">📚</div>
+    <p class="eyebrow">NH INTERACTIVE</p>
+    <h2 id="languageWelcomeTitle">Welcome! <span lang="ja">ようこそ！</span></h2>
+    <p class="language-subtitle">Choose your language<br><span lang="ja">言語を選んでください</span></p>
+    <div class="language-options">
+      <button class="language-option" data-language="ja"><span>🇯🇵</span><b>日本語</b><small>Japanese</small></button>
+      <button class="language-option recommended" data-language="bi"><span>🌏</span><b>English + 日本語</b><small>Recommended / おすすめ</small></button>
+      <button class="language-option" data-language="en"><span>🇬🇧</span><b>English</b><small>英語</small></button>
+    </div>
+  </div>
+</div>
+
+<div id="languageSettings" class="language-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="languageSettingsTitle">
+  <div class="language-modal settings-modal">
+    <button id="closeLanguageSettings" class="modal-close" aria-label="Close">×</button>
+    <div class="language-logo">⚙️</div>
+    <h2 id="languageSettingsTitle">Language Settings<br><span lang="ja">言語設定</span></h2>
+    <div class="language-options">
+      <button class="language-option" data-language="ja"><span>🇯🇵</span><b>日本語</b><small>Japanese</small></button>
+      <button class="language-option" data-language="bi"><span>🌏</span><b>English + 日本語</b><small>Recommended / おすすめ</small></button>
+      <button class="language-option" data-language="en"><span>🇬🇧</span><b>English</b><small>英語</small></button>
+    </div>
+  </div>
+</div>
+
 <header class="topbar">
   <button id="logoBtn" class="logo-btn">
     <span class="logo-icon">📚</span>
@@ -16,6 +44,7 @@
     <span class="pill">⭐ <b id="xpValue">0</b> XP</span>
     <span class="pill">🏅 Lv. <b id="levelValue">1</b></span>
     <span class="pill">🔥 <b id="streakValue">1</b> day</span>
+    <button id="languageBtn" class="icon-btn language-btn" title="Language / 言語">🌏</button>
     <button id="soundBtn" class="icon-btn" title="Sound">🔊</button>
     <button id="themeBtn" class="icon-btn" title="Theme">☀️</button>
   </div>
