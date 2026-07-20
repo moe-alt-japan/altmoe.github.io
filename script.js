@@ -292,27 +292,92 @@ function renderAdventure(){
 function openAdventure(){showView("adventureView");$("stagePanel").classList.add("hidden");$("battlePanel").classList.add("hidden");renderAdventure();}
 function openAdventureWorld(id){activeWorld=id;const w=ADVENTURE_WORLDS.find(x=>x.id===id);$("worldGrid").classList.add("hidden");$("stagePanel").classList.remove("hidden");$("worldLabel").textContent=`${PORTAL_DATA[id].title} · ADVENTURE`;$("worldTitle").textContent=`${w.icon} ${w.name} / ${w.ja}`;$("worldDescription").textContent=w.desc;renderStages();}
 function renderStages(){const cleared=adventureProgress[activeWorld]||0;$("stageGrid").innerHTML="";[1,2,3,4].forEach(n=>{const boss=n===4,unlocked=n<=cleared+1,complete=n<=cleared;const b=document.createElement("button");b.className=`stage-card${boss?" boss-stage":""}${unlocked?"":" locked"}${complete?" complete":""}`;b.innerHTML=`<div class="stage-icon">${complete?"✅":boss?"🐉":"⭐"}</div><h3>${boss?"Boss Battle":`Stage ${n}`}</h3><small>${boss?"ボスバトル":`ステージ ${n}`}</small>`;if(unlocked)b.onclick=()=>startAdventureBattle(n,boss);$("stageGrid").appendChild(b);});}
-function startAdventureBattle(stage,boss){battleIsBoss=boss;battleIndex=0;playerHealth=100;enemyHealth=boss?150:100;const pool=shuffle(getWorldWords(activeWorld));battleWords=pool.slice(0,boss?10:5);$("stagePanel").classList.add("hidden");$("battlePanel").classList.remove("hidden");const w=ADVENTURE_WORLDS.find(x=>x.id===activeWorld);$("bossArt").textContent=boss?w.bossIcon:"👾";$("enemyName").textContent=boss?w.boss:w.enemy;$("battleStageLabel").textContent=boss?"FINAL BOSS / 最終ボス":`STAGE ${stage} / ステージ ${stage}`;$("battleTitle").textContent=boss?`${w.boss} Battle`:`${w.enemy} Battle`;$("battlePanel").dataset.stage=stage;renderBattleQuestion();updateBattleBars();}
-function updateBattleBars(){$("playerHP").style.width=`${Math.max(0,playerHealth)}%`;$ ("enemyHP").style.width=`${Math.max(0,Math.min(100,enemyHealth/(battleIsBoss?150:100)*100))}%`;}
-function renderBattleQuestion(){if(enemyHealth<=0)return finishBattle(true);if(playerHealth<=0||battleIndex>=battleWords.length)return finishBattle(false);const current=battleWords[battleIndex],choices=shuffle([current,...shuffle(getWorldWords(activeWorld).filter(x=>x.english!==current.english)).slice(0,3)]);$("battlePrompt").textContent=current.japanese;$("battleFeedback").textContent="";$("battleChoices").innerHTML="";choices.forEach(c=>{const b=document.createElement("button");b.className="choice";b.textContent=c.english;b.onclick=()=>answerBattle(b,c.english===current.english,current);$("battleChoices").appendChild(b);});}
+function startAdventureBattle(stage,boss){
+  battleIsBoss=Boolean(boss);
+  battleIndex=0;
+  playerHealth=100;
+  enemyHealth=battleIsBoss?150:100;
+  const pool=shuffle(getWorldWords(activeWorld));
+  battleWords=pool.slice(0,battleIsBoss?10:5);
+  $("stagePanel").classList.add("hidden");
+  $("battlePanel").classList.remove("hidden");
+  const w=ADVENTURE_WORLDS.find(x=>x.id===activeWorld);
+  $("bossArt").textContent=battleIsBoss?w.bossIcon:"👾";
+  $("enemyName").textContent=battleIsBoss?w.boss:w.enemy;
+  $("battleStageLabel").textContent=battleIsBoss?"FINAL BOSS / 最終ボス":`STAGE ${stage} / ステージ ${stage}`;
+  $("battleTitle").textContent=battleIsBoss?`${w.boss} Battle`:`${w.enemy} Battle`;
+  $("battlePanel").dataset.stage=String(stage);
+  updateBattleBars();
+  renderBattleQuestion();
+}
+function updateBattleBars(){
+  const maxEnemy=battleIsBoss?150:100;
+  const playerPct=Math.max(0,Math.min(100,playerHealth));
+  const enemyPct=Math.max(0,Math.min(100,(enemyHealth/maxEnemy)*100));
+  $("playerHP").style.width=`${playerPct}%`;
+  $("enemyHP").style.width=`${enemyPct}%`;
+  if($("playerHPText")) $("playerHPText").textContent=`${Math.max(0,playerHealth)} / 100`;
+  if($("enemyHPText")) $("enemyHPText").textContent=`${Math.max(0,enemyHealth)} / ${maxEnemy}`;
+}
+function renderBattleQuestion(){
+  if(enemyHealth<=0){finishBattle(true);return;}
+  if(playerHealth<=0){finishBattle(false);return;}
+  if(battleIndex>=battleWords.length){
+    // A normal stage has exactly enough questions to defeat the enemy when all are correct.
+    finishBattle(enemyHealth<=0);
+    return;
+  }
+  const current=battleWords[battleIndex];
+  const distractors=shuffle(getWorldWords(activeWorld).filter(x=>x.english!==current.english)).slice(0,3);
+  const choices=shuffle([current,...distractors]);
+  $("battlePrompt").textContent=current.japanese;
+  $("battleFeedback").textContent=`Question ${battleIndex+1} / ${battleWords.length}`;
+  $("battleChoices").innerHTML="";
+  choices.forEach(c=>{
+    const b=document.createElement("button");
+    b.className="choice";
+    b.textContent=c.english;
+    b.onclick=()=>answerBattle(b,c.english===current.english,current);
+    $("battleChoices").appendChild(b);
+  });
+}
 function answerBattle(btn,correct,word){
-  document.querySelectorAll("#battleChoices .choice").forEach(b=>b.disabled=true);
+  const buttons=[...document.querySelectorAll("#battleChoices .choice")];
+  buttons.forEach(b=>b.disabled=true);
+
   if(correct){
     btn.classList.add("correct");
-    enemyHealth-=battleIsBoss?18:25;
+    enemyHealth=Math.max(0,enemyHealth-(battleIsBoss?18:25));
     $("battleFeedback").textContent=battleIsBoss?"⚔️ Critical Hit!":"⚔️ Great attack!";
-    addXP(10);
-    markStudied(word);
   }else{
     btn.classList.add("wrong");
-    playerHealth-=25;
+    const correctButton=buttons.find(b=>norm(b.textContent)===norm(word.english));
+    if(correctButton) correctButton.classList.add("correct");
+    playerHealth=Math.max(0,playerHealth-25);
     $("battleFeedback").textContent=`💥 The answer was ${word.english}.`;
-    markWrong(word);
   }
+
+  // Update battle state first, before optional statistics code runs.
   battleIndex++;
   updateBattleBars();
-  window.setTimeout(()=>renderBattleQuestion(),900);
+
+  // Keep rewards/statistics from blocking the actual battle flow.
+  try{
+    if(correct){addXP(10);markStudied(word);clearWrongWord(word);}
+    else markWrong(word);
+  }catch(error){
+    console.error("Battle statistics update failed, but the battle will continue:",error);
+  }
+
+  window.setTimeout(()=>{
+    if(enemyHealth<=0) finishBattle(true);
+    else if(playerHealth<=0) finishBattle(false);
+    else renderBattleQuestion();
+  },800);
 }
 function finishBattle(win){if(win){const stage=Number($("battlePanel").dataset.stage),reward=battleIsBoss?100:30;adventureCoins+=reward;adventureProgress[activeWorld]=Math.max(adventureProgress[activeWorld]||0,stage);saveAdventure();$("battlePrompt").textContent=battleIsBoss?"🏆 BOSS DEFEATED!":"🎉 STAGE CLEAR!";$("battleChoices").innerHTML=`<button class="primary-btn" id="battleContinue">Collect ${reward} coins and continue</button>`;$("battleFeedback").textContent=`You earned ${reward} coins! / ${reward}コインをゲット！`;$ ("battleContinue").onclick=()=>{renderAdventure();openAdventureWorld(activeWorld)};}else{$("battlePrompt").textContent="Try Again! / もう一度挑戦！";$("battleChoices").innerHTML='<button class="primary-btn" id="battleRetry">Retry Battle</button>';$("battleFeedback").textContent="Review the words and defeat the enemy next time.";$ ("battleRetry").onclick=()=>startAdventureBattle(Number($("battlePanel").dataset.stage),battleIsBoss);}}
-$("adventureBtn").onclick=openAdventure;$("backAdventureHomeBtn").onclick=()=>{showView("homeView");$("worldGrid").classList.remove("hidden")};$("closeWorldBtn").onclick=()=>{$("stagePanel").classList.add("hidden");$("worldGrid").classList.remove("hidden");renderAdventure()};$("battleExitBtn").onclick=()=>{openAdventureWorld(activeWorld)};
-renderAdventure();
+if($("adventureBtn")) $("adventureBtn").onclick=openAdventure;
+if($("backAdventureHomeBtn")) $("backAdventureHomeBtn").onclick=()=>{showView("homeView");$("worldGrid").classList.remove("hidden")};
+if($("closeWorldBtn")) $("closeWorldBtn").onclick=()=>{$("stagePanel").classList.add("hidden");$("worldGrid").classList.remove("hidden");renderAdventure()};
+if($("battleExitBtn")) $("battleExitBtn").onclick=()=>{openAdventureWorld(activeWorld)};
+if($("worldGrid")) renderAdventure();

@@ -60,6 +60,7 @@
       <div class="dashboard-actions">
         <button id="continueBtn" class="primary-btn">▶ Continue Learning</button>
         <button id="browseBooksBtn" class="secondary-btn">📚 Browse Textbooks</button>
+        <button id="adventureBtn" class="secondary-btn">🗺️ Adventure Mode<br><small>アドベンチャーモード</small></button>
       </div>
     </div>
     <div class="level-orb"><span>LEVEL</span><b id="dashboardLevel">1</b><small id="dashboardXP">0 XP</small></div>
@@ -109,6 +110,43 @@
       <div class="grade-card-copy"><small>Grade 9</small><h2>New Horizon 3</h2><p>Junior High School Year 3</p></div><b>→</b>
     </button>
   </div>
+</section>
+
+
+<section id="adventureView" class="view">
+  <button id="backAdventureHomeBtn" class="back-btn home-btn">🏠 Dashboard / ホーム</button>
+  <div class="adventure-hero">
+    <div>
+      <p class="eyebrow">ENGLISH ADVENTURE / 英語アドベンチャー</p>
+      <h1>Choose Your World</h1>
+      <p>Clear vocabulary battles, earn coins, and unlock new worlds.</p>
+    </div>
+    <div class="adventure-wallet">💰 <b id="coinValue">0</b> coins</div>
+  </div>
+  <div id="worldGrid" class="world-grid"></div>
+
+  <section id="stagePanel" class="stage-panel hidden">
+    <div class="stage-panel-head">
+      <div><p id="worldLabel" class="eyebrow"></p><h2 id="worldTitle"></h2><p id="worldDescription"></p></div>
+      <button id="closeWorldBtn" class="secondary-btn">← Worlds / ワールド</button>
+    </div>
+    <div id="stageGrid" class="stage-grid"></div>
+  </section>
+
+  <section id="battlePanel" class="battle-panel hidden" aria-live="polite">
+    <div id="bossArt" class="boss-art">👾</div>
+    <p id="battleStageLabel" class="eyebrow"></p>
+    <h2 id="battleTitle">Vocabulary Battle</h2>
+    <div class="battle-bars">
+      <div><div class="hp-label"><span>You</span><b id="playerHPText">100 / 100</b></div><div class="hp-track"><i id="playerHP"></i></div></div>
+      <div><div class="hp-label"><span id="enemyName">Enemy</span><b id="enemyHPText">100 / 100</b></div><div class="hp-track enemy"><i id="enemyHP"></i></div></div>
+    </div>
+    <p class="battle-hint">Choose the correct English word.</p>
+    <h2 id="battlePrompt"></h2>
+    <div id="battleChoices" class="choice-grid"></div>
+    <p id="battleFeedback" class="feedback"></p>
+    <button id="battleExitBtn" class="secondary-btn">Exit Battle / バトルをやめる</button>
+  </section>
 </section>
 
 <section id="unitsView" class="view">
@@ -271,7 +309,7 @@
 </section>
 </main>
 
-<footer>NH Interactive v1.4 · Made for classroom learning · Progress is saved on this device</footer>
+<footer>NH Interactive v1.5.2 · Made for classroom learning · Progress is saved on this device</footer>
 <div id="toast" class="toast"></div>
 <script src="data.js"></script>
 <script src="script.js"></script>
