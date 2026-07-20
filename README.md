@@ -1,19 +1,24 @@
-# NH Interactive v1.5.2 — Adventure Battle Fix
+# NH Interactive v1.5.3 — Adventure Update
 
-This update repairs Adventure Mode battle progression.
-
-## Fixed
-- Enemy HP decreases immediately after a correct answer.
-- Player HP decreases after a wrong answer.
-- HP numbers are shown beside both health bars.
-- The next vocabulary question loads automatically.
-- Correct-answer highlighting is shown after mistakes.
-- Battle progress continues even if an optional statistics update fails.
-- Adventure Mode HTML is included directly in `index.html`.
+## New in v1.5.3
+- Playable English Adventure Mode
+- School, Forest, and Castle worlds
+- Four stages per world, including a boss battle
+- World and stage unlocking
+- Coins saved on each device
+- Battle HP, attacks, correct-answer damage, and retry system
+- Adventure progress saved with localStorage
+- Existing multilingual interface, dashboard, games, XP, achievements, and textbook vocabulary preserved
 
 ## GitHub upload
-Extract the ZIP and upload every file to the repository root. Replace the older files.
+Upload all files in this ZIP to the repository root and replace the older files.
 
 Suggested commit message:
 
-`Fix Adventure Mode HP and question progression in v1.5.2`
+`Release NH Interactive v1.5.3 adventure update`
+
+
+## v1.5.3 restoration fix
+- Restores the complete Adventure Mode world and stage interface from v1.5.
+- Fixes enemy/player HP updates and automatic question progression.
+- Adds cache-busting version tags so GitHub Pages loads the matching CSS and JavaScript files after upload.
