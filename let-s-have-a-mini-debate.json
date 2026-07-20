@@ -1,0 +1,129 @@
+{
+  "key": "let-s-have-a-mini-debate",
+  "title": "Let’s Have a Mini Debate",
+  "subtitle": "Special Reading Vocabulary",
+  "kind": "Special Reading",
+  "words": [
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-001",
+      "english": "mini debate",
+      "japanese": "ミニディベート",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “mini debate” in a sentence.",
+      "section": "Special Reading",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-002",
+      "english": "disagree",
+      "japanese": "意見が合わない",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “disagree” in a sentence.",
+      "section": "Special Reading",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-003",
+      "english": "judge",
+      "japanese": "審判員",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “judge” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-004",
+      "english": "the United States",
+      "japanese": "アメリカ合衆国",
+      "reading": "",
+      "emoji": "📍",
+      "example": "Practice using “the United States” in a sentence.",
+      "section": "Special Reading",
+      "category": "proper noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-005",
+      "english": "variety",
+      "japanese": "さまざまな",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “variety” in a sentence.",
+      "section": "Special Reading",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-006",
+      "english": "amazing",
+      "japanese": "驚くべき",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “amazing” in a sentence.",
+      "section": "Special Reading",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-007",
+      "english": "countryside",
+      "japanese": "田舎",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “countryside” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-008",
+      "english": "seem",
+      "japanese": "…のように見える",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “seem” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-009",
+      "english": "for one thing",
+      "japanese": "ひとつには",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “for one thing” in a sentence.",
+      "section": "Special Reading",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-010",
+      "english": "eat out",
+      "japanese": "外食する",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “eat out” in a sentence.",
+      "section": "Special Reading",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-LET-S-HAVE-A-MINI-DEBATE-011",
+      "english": "not … at all",
+      "japanese": "まったく…ない",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “not … at all” in a sentence.",
+      "section": "Special Reading",
+      "category": "phrase",
+      "difficulty": 2
+    }
+  ]
+}

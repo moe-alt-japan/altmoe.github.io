@@ -1,0 +1,272 @@
+{
+  "key": "lets-have-a-discussion",
+  "title": "Let’s Have a Discussion",
+  "subtitle": "Discussion Vocabulary",
+  "kind": "Special Reading",
+  "words": [
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-001",
+      "english": "discussion",
+      "japanese": "討論、話し合い",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “discussion” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-002",
+      "english": "chosen (⇐ choose)",
+      "japanese": "[chooseの過去分詞]",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “chosen (⇐ choose)” in a sentence.",
+      "section": "Discussion",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-003",
+      "english": "tourism",
+      "japanese": "観光客、旅行者",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “tourism” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-004",
+      "english": "industry",
+      "japanese": "産業、工業、…業",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “industry” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-005",
+      "english": "develop",
+      "japanese": "…を発展させる",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “develop” in a sentence.",
+      "section": "Discussion",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-006",
+      "english": "against",
+      "japanese": "…に反対して",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “against” in a sentence.",
+      "section": "Discussion",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-007",
+      "english": "increase",
+      "japanese": "増加",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “increase” in a sentence.",
+      "section": "Discussion",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-008",
+      "english": "cause",
+      "japanese": "…の原因となる、…をひき起こす",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “cause” in a sentence.",
+      "section": "Discussion",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-009",
+      "english": "traffic jam(s)",
+      "japanese": "交通渋滞",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “traffic jam(s)” in a sentence.",
+      "section": "Discussion",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-010",
+      "english": "pollute",
+      "japanese": "（水・空気など）を汚す、汚染する",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “pollute” in a sentence.",
+      "section": "Discussion",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-011",
+      "english": "environment",
+      "japanese": "環境",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “environment” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-012",
+      "english": "therefore",
+      "japanese": "それゆえに、したがって、だから",
+      "reading": "",
+      "emoji": "➕",
+      "example": "Practice using “therefore” in a sentence.",
+      "section": "Discussion",
+      "category": "conjunction",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-013",
+      "english": "review",
+      "japanese": "…を見直す",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “review” in a sentence.",
+      "section": "Discussion",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-014",
+      "english": "value(s)",
+      "japanese": "価値",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “value(s)” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-015",
+      "english": "destroy",
+      "japanese": "…を破壊する",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “destroy” in a sentence.",
+      "section": "Discussion",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-016",
+      "english": "attract(ing)",
+      "japanese": "（人）をひきつける",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “attract(ing)” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-017",
+      "english": "possible",
+      "japanese": "（物事が）可能な、できる",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “possible” in a sentence.",
+      "section": "Discussion",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-018",
+      "english": "point",
+      "japanese": "論点",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “point” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-019",
+      "english": "agree",
+      "japanese": "賛成する",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “agree” in a sentence.",
+      "section": "Discussion",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-020",
+      "english": "concern(ed)",
+      "japanese": "（人）を心配させる",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “concern(ed)” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-021",
+      "english": "crime(s)",
+      "japanese": "罪、犯罪",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “crime(s)” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-022",
+      "english": "due",
+      "japanese": "[due toで]…のために、…が原因で",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “due” in a sentence.",
+      "section": "Discussion",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-023",
+      "english": "be afraid of",
+      "japanese": "…をおそれる",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “be afraid of” in a sentence.",
+      "section": "Discussion",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-LETS-HAVE-A-DISCUSSION-024",
+      "english": "due to",
+      "japanese": "…のために、…が原因で",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “due to” in a sentence.",
+      "section": "Discussion",
+      "category": "phrase",
+      "difficulty": 2
+    }
+  ]
+}

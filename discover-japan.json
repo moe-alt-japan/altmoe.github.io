@@ -1,0 +1,140 @@
+{
+  "key": "discover-japan",
+  "title": "Discover Japan",
+  "subtitle": "Special Reading Vocabulary",
+  "kind": "Special Reading",
+  "words": [
+    {
+      "id": "NH3-DISCOVER-JAPAN-001",
+      "english": "item(s)",
+      "japanese": "品目",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “item(s)” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-002",
+      "english": "piece",
+      "japanese": "部分、断片",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “piece” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-003",
+      "english": "cloth",
+      "japanese": "布、服地",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “cloth” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-004",
+      "english": "wrap",
+      "japanese": "…を包む",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “wrap” in a sentence.",
+      "section": "Special Reading",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-005",
+      "english": "fold",
+      "japanese": "…を折る、折りたたむ",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “fold” in a sentence.",
+      "section": "Special Reading",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-006",
+      "english": "convenient",
+      "japanese": "便利な",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “convenient” in a sentence.",
+      "section": "Special Reading",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-007",
+      "english": "instead",
+      "japanese": "そのかわりに",
+      "reading": "",
+      "emoji": "⚡",
+      "example": "Practice using “instead” in a sentence.",
+      "section": "Special Reading",
+      "category": "adverb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-008",
+      "english": "resource(s)",
+      "japanese": "資源",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “resource(s)” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-009",
+      "english": "a piece of",
+      "japanese": "1つの…",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “a piece of” in a sentence.",
+      "section": "Special Reading",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-010",
+      "english": "fold … up",
+      "japanese": "…を折りたたむ",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “fold … up” in a sentence.",
+      "section": "Special Reading",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-011",
+      "english": "instead of",
+      "japanese": "…のかわりに",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “instead of” in a sentence.",
+      "section": "Special Reading",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-DISCOVER-JAPAN-012",
+      "english": "won't",
+      "japanese": "will not",
+      "reading": "",
+      "emoji": "🔗",
+      "example": "Practice using “won't” in a sentence.",
+      "section": "Special Reading",
+      "category": "contraction",
+      "difficulty": 2
+    }
+  ]
+}

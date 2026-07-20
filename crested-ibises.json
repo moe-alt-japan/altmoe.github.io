@@ -1,0 +1,74 @@
+{
+  "key": "crested-ibises",
+  "title": "Crested Ibises",
+  "subtitle": "Special Reading Vocabulary",
+  "kind": "Special Reading",
+  "words": [
+    {
+      "id": "NH3-CRESTED-IBISES-001",
+      "english": "breed",
+      "japanese": "…を繁殖させる",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “breed” in a sentence.",
+      "section": "Special Reading",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-CRESTED-IBISES-002",
+      "english": "release(d)",
+      "japanese": "…を放す",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “release(d)” in a sentence.",
+      "section": "Special Reading",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-CRESTED-IBISES-003",
+      "english": "reach(ed)",
+      "japanese": "…に達する、到着する",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “reach(ed)” in a sentence.",
+      "section": "Special Reading",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-CRESTED-IBISES-004",
+      "english": "nowadays",
+      "japanese": "このごろは、今日では",
+      "reading": "",
+      "emoji": "⚡",
+      "example": "Practice using “nowadays” in a sentence.",
+      "section": "Special Reading",
+      "category": "adverb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-CRESTED-IBISES-005",
+      "english": "continue(d)",
+      "japanese": "…を続ける",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “continue(d)” in a sentence.",
+      "section": "Special Reading",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH3-CRESTED-IBISES-006",
+      "english": "crested ibis(es)",
+      "japanese": "トキ",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “crested ibis(es)” in a sentence.",
+      "section": "Special Reading",
+      "category": "phrase",
+      "difficulty": 2
+    }
+  ]
+}

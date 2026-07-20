@@ -1,0 +1,96 @@
+{
+  "key": "my-school-and-school-life",
+  "title": "My School and School Life",
+  "subtitle": "Special Reading Vocabulary",
+  "kind": "Special Reading",
+  "words": [
+    {
+      "id": "NH2-MY-SCHOOL-AND-SCHOOL-LIFE-001",
+      "english": "artificial",
+      "japanese": "人工の、人工的な、人造の",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “artificial” in a sentence.",
+      "section": "Special Reading",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-MY-SCHOOL-AND-SCHOOL-LIFE-002",
+      "english": "turf",
+      "japanese": "芝、芝地",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “turf” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-MY-SCHOOL-AND-SCHOOL-LIFE-003",
+      "english": "field",
+      "japanese": "競技場、（陸上競技の）フィールド",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “field” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-MY-SCHOOL-AND-SCHOOL-LIFE-004",
+      "english": "video",
+      "japanese": "映像、動画",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “video” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-MY-SCHOOL-AND-SCHOOL-LIFE-005",
+      "english": "unique",
+      "japanese": "特有の、独特な、ただ一つの、唯一の",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “unique” in a sentence.",
+      "section": "Special Reading",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-MY-SCHOOL-AND-SCHOOL-LIFE-006",
+      "english": "almost",
+      "japanese": "ほとんど",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “almost” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-MY-SCHOOL-AND-SCHOOL-LIFE-007",
+      "english": "belong",
+      "japanese": "［belong toで］…に所属する",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “belong” in a sentence.",
+      "section": "Special Reading",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-MY-SCHOOL-AND-SCHOOL-LIFE-008",
+      "english": "clean up",
+      "japanese": "きれいにそうじする",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice using “clean up” in a sentence.",
+      "section": "Special Reading",
+      "category": "phrase",
+      "difficulty": 2
+    }
+  ]
+}

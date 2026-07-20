@@ -28,7 +28,7 @@ function openGrade(g){
   $("gradeLabel").textContent=d.label.toUpperCase();
   $("gradeTitle").textContent=d.title;
   $("unitGrid").innerHTML="";
-  for(let i=1;i<=10;i++){
+  for(let i=1;i<=d.unitCount;i++){
     const u=d.units[String(i)];
     const b=document.createElement("button");
     b.className="unit-card"+(u?"":" locked");

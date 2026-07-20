@@ -1,0 +1,85 @@
+{
+  "key": "my-favorite-japanese-food",
+  "title": "My favorite  Japanese food",
+  "subtitle": "Special Reading Vocabulary",
+  "kind": "Special Reading",
+  "words": [
+    {
+      "id": "NH2-MY-FAVORITE-JAPANESE-FOOD-001",
+      "english": "flour",
+      "japanese": "小麦粉",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “flour” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-MY-FAVORITE-JAPANESE-FOOD-002",
+      "english": "cabbage",
+      "japanese": "キャベツ",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “cabbage” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-MY-FAVORITE-JAPANESE-FOOD-003",
+      "english": "crispy",
+      "japanese": "カリカリした",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “crispy” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-MY-FAVORITE-JAPANESE-FOOD-004",
+      "english": "tasty",
+      "japanese": "おいしい、味がよい",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “tasty” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-MY-FAVORITE-JAPANESE-FOOD-005",
+      "english": "easily",
+      "japanese": "簡単に、楽に、すぐに",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “easily” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH2-MY-FAVORITE-JAPANESE-FOOD-006",
+      "english": "ingredient(s)",
+      "japanese": "（料理などの）材料",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “ingredient(s)” in a sentence.",
+      "section": "Special Reading",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH2-MY-FAVORITE-JAPANESE-FOOD-007",
+      "english": "reason(s)",
+      "japanese": "理由、根拠",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice using “reason(s)” in a sentence.",
+      "section": "Special Reading",
+      "category": "noun",
+      "difficulty": 1
+    }
+  ]
+}
