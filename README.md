@@ -1,28 +1,12 @@
-# NH Interactive v2.0 Phase A — Modular Foundation
+# NH Interactive v1.5.4 — Single-file Recovery Build
 
-This release reorganizes the working v1.5.4 website into a safer modular project structure. The visible website and existing features are preserved.
+This recovery release places all CSS, vocabulary data, interface code, Adventure Mode, and battle logic directly inside `index.html`.
 
-## Preserved features
-- English, Japanese, and bilingual interface
-- Dashboard, daily missions, achievements, XP, levels, and statistics
-- New Horizon 1–3 textbook vocabulary
-- Flashcards and all existing study games
-- Adventure Mode, stage progress, coins, HP, and boss battles
-- Browser-based progress saving
+## Upload instructions
+1. Delete the old `index.html`, `script.js`, `style.css`, and `data.js` from the GitHub repository root.
+2. Upload the five files in this package to the repository root.
+3. Commit the changes.
+4. Wait for GitHub Pages deployment to finish.
+5. Open the site and press Ctrl+F5.
 
-## New project structure
-```
-index.html
-assets/images/
-css/main.css
-data/portal-data.js
-js/app.js
-js/adventure.js
-docs/ARCHITECTURE.md
-```
-
-## GitHub upload
-Upload the complete folder structure. Do not flatten the folders. Replace the previous site files and keep GitHub Pages pointed at the repository root.
-
-Suggested commit message:
-`Begin NH Interactive v2.0 Phase A modular foundation`
+You should see `v1.5.4` beside “Learn. Play. Improve.” in the header. This confirms the correct build is live.
