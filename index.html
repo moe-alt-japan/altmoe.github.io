@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>New Horizon English Learning Portal</title>
+  <title>NH Interactive</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="topbar">
   <button id="logoBtn" class="logo-btn">
     <span class="logo-icon">📚</span>
-    <span><strong>New Horizon English Learning Portal</strong><small>New Horizon Vocabulary Practice</small></span>
+    <span><strong>NH Interactive</strong><small>Learn. Play. Improve.</small></span>
   </button>
   <div class="top-actions">
     <span class="pill">⭐ <b id="xpValue">0</b> XP</span>
@@ -25,8 +25,8 @@
   <div class="hero">
     <div>
       <p class="eyebrow">CHOOSE YOUR GRADE</p>
-      <h1>Welcome to the New Horizon English Learning Portal</h1>
-      <p>Select a grade, then choose a unit.</p>
+      <h1>Welcome to NH Interactive</h1>
+      <p>Choose a textbook and start learning.</p>
     </div>
     <div class="hero-icon">🎓</div>
   </div>
@@ -50,14 +50,14 @@
 <section id="unitsView" class="view">
   <button id="backHomeBtn" class="back-btn home-btn" aria-label="Go back to the home page">🏠 <span>Home</span><span class="home-divider">/</span><span lang="ja">ホーム</span></button>
   <div class="page-heading">
-    <div><p id="gradeLabel" class="eyebrow"></p><h1 id="gradeTitle"></h1><p>Choose a unit to study.</p></div>
+    <div><p id="gradeLabel" class="eyebrow"></p><h1 id="gradeTitle"></h1><p>Choose a unit, Real Life English lesson, or story.</p></div>
     <div class="hero-icon">📁</div>
   </div>
   <div id="unitGrid" class="unit-grid"></div>
 </section>
 
 <section id="studyView" class="view">
-  <button id="backUnitsBtn" class="back-btn">← Units</button>
+  <button id="backUnitsBtn" class="back-btn home-btn">← Units / 単元</button>
 
   <div class="study-heading">
     <div>
@@ -98,9 +98,6 @@
     </div>
     <div class="filter-bar">
       <input id="wordSearch" type="search" placeholder="Search English or Japanese…">
-      <select id="partFilter">
-        <option value="all">All parts</option>
-      </select>
       <select id="categoryFilter">
         <option value="all">All categories</option>
       </select>

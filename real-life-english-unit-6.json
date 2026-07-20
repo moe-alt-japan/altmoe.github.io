@@ -1,0 +1,240 @@
+{
+  "key": "real-life-english-unit-6",
+  "title": "Unit 6 Real Life English",
+  "subtitle": "Practical Conversation Vocabulary",
+  "kind": "Real Life English",
+  "unit": 6,
+  "words": [
+    {
+      "id": "NH1-RLE-U06-001",
+      "english": "open",
+      "japanese": "（…を）開く、あける",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “open” as a verb.",
+      "section": "Real Life English",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-002",
+      "english": "close",
+      "japanese": "…を閉じる、終える",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “close” as a verb.",
+      "section": "Real Life English",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-003",
+      "english": "window",
+      "japanese": "窓",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “window”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U06-004",
+      "english": "sure",
+      "japanese": "もちろん、いいとも",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “sure”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U06-005",
+      "english": "problem",
+      "japanese": "問題",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “problem”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U06-006",
+      "english": "little",
+      "japanese": "[a littleで]少し",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “little” as an adjective.",
+      "section": "Real Life English",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-007",
+      "english": "dark",
+      "japanese": "暗い",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “dark” as an adjective.",
+      "section": "Real Life English",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-008",
+      "english": "light(s)",
+      "japanese": "明かり、電灯",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “light”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U06-009",
+      "english": "just",
+      "japanese": "ただ…だけ",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “just”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U06-010",
+      "english": "moment",
+      "japanese": "瞬間、ちょっとの間",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “moment”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U06-011",
+      "english": "off",
+      "japanese": "切れて、止まって",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “off”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U06-012",
+      "english": "borrow",
+      "japanese": "…を借りる",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “borrow” as a verb.",
+      "section": "Real Life English",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-013",
+      "english": "help",
+      "japanese": "…を手伝う、助ける",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “help” as a verb.",
+      "section": "Real Life English",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-014",
+      "english": "homework",
+      "japanese": "宿題",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “homework”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U06-015",
+      "english": "No problem.",
+      "japanese": "いいですよ。もちろん。",
+      "reading": "",
+      "emoji": "🗣️",
+      "example": "Practice saying: No problem.",
+      "section": "Real Life English",
+      "category": "expression",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-016",
+      "english": "a little",
+      "japanese": "少し",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: a little",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-017",
+      "english": "turn on",
+      "japanese": "（スイッチ）をいれる、つける",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: turn on",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-018",
+      "english": "help … with ~",
+      "japanese": "…を〜の面で手伝う",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: help … with ~",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-019",
+      "english": "All right.",
+      "japanese": "よろしい。わかった。",
+      "reading": "",
+      "emoji": "🗣️",
+      "example": "Practice saying: All right.",
+      "section": "Real Life English",
+      "category": "expression",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-020",
+      "english": "Just a moment.",
+      "japanese": "ちょっと待って。",
+      "reading": "",
+      "emoji": "🗣️",
+      "example": "Practice saying: Just a moment.",
+      "section": "Real Life English",
+      "category": "expression",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U06-021",
+      "english": "turn off",
+      "japanese": "（スイッチ）をとめる、消す",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: turn off",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    }
+  ]
+}

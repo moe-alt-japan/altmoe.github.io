@@ -1,0 +1,185 @@
+{
+  "key": "real-life-english-unit-9",
+  "title": "Unit 9 Real Life English",
+  "subtitle": "Practical Conversation Vocabulary",
+  "kind": "Real Life English",
+  "unit": 9,
+  "words": [
+    {
+      "id": "NH1-RLE-U09-001",
+      "english": "dear",
+      "japanese": "親愛なる…（様）",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “dear” as a verb.",
+      "section": "Real Life English",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U09-002",
+      "english": "grandma",
+      "japanese": "おばあちゃん",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “grandma”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U09-003",
+      "english": "grandpa",
+      "japanese": "おじいちゃん",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “grandpa”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U09-004",
+      "english": "ski(ing)",
+      "japanese": "スキーをする",
+      "reading": "",
+      "emoji": "🏃",
+      "example": "Practice using “ski” as a verb.",
+      "section": "Real Life English",
+      "category": "verb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U09-005",
+      "english": "fell (← fall)",
+      "japanese": "［fallの過去形］",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: fell",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U09-006",
+      "english": "Mt.",
+      "japanese": "…山",
+      "reading": "",
+      "emoji": "📍",
+      "example": "We learned about Mt..",
+      "section": "Real Life English",
+      "category": "proper noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U09-007",
+      "english": "snow",
+      "japanese": "雪",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “snow”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U09-008",
+      "english": "outside",
+      "japanese": "外で［に］",
+      "reading": "",
+      "emoji": "⚡",
+      "example": "Practice the word “outside”.",
+      "section": "Real Life English",
+      "category": "adverb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U09-009",
+      "english": "miss",
+      "japanese": "…がないのをさびしく思う",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “miss” as an adjective.",
+      "section": "Real Life English",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U09-010",
+      "english": "care",
+      "japanese": "世話",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “care”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U09-011",
+      "english": "down",
+      "japanese": "下に、下がって",
+      "reading": "",
+      "emoji": "⚡",
+      "example": "Practice the word “down”.",
+      "section": "Real Life English",
+      "category": "adverb",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U09-012",
+      "english": "hotel",
+      "japanese": "ホテル",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “hotel”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U09-013",
+      "english": "go …ing",
+      "japanese": "…しに行く",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: go …ing",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U09-014",
+      "english": "for the first time",
+      "japanese": "はじめて",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: for the first time",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U09-015",
+      "english": "fall down",
+      "japanese": "倒れる",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: fall down",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U09-016",
+      "english": "take care of oneself",
+      "japanese": "体に気をつける",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: take care of oneself",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    }
+  ]
+}

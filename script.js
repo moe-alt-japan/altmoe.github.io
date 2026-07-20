@@ -1,7 +1,8 @@
+
 const $=id=>document.getElementById(id);
 const shuffle=a=>[...a].sort(()=>Math.random()-.5);
-const norm=s=>s.toLowerCase().trim().replace(/[’']/g,"'").replace(/\s+/g," ");
-const W=w=>Array.isArray(w)?{english:w[0],japanese:w[1],reading:"",emoji:w[2]||"📝",example:w[3]||"",part:"General",category:"word",difficulty:1}:w;
+const norm=s=>String(s).toLowerCase().trim().replace(/[’']/g,"'").replace(/\s+/g," ");
+const W=w=>Array.isArray(w)?{english:w[0],japanese:w[1],reading:"",emoji:w[2]||"📝",example:w[3]||"",section:"Main Lesson",category:"word",difficulty:1}:w;
 const en=w=>W(w).english, jp=w=>W(w).japanese, emoji=w=>W(w).emoji||"📝", example=w=>W(w).example||"";
 let grade=null,unit=null,words=[],xp=Number(localStorage.getItem("portalXP")||0);
 let studied=new Set(),favorites=new Set(),wrong=new Set();
@@ -21,8 +22,44 @@ function markWrong(w){wrong.add(en(w));saveSets();updateStats()}
 function clearWrongWord(w){wrong.delete(en(w));saveSets();updateStats()}
 
 function goHome(){showView("homeView")}
-function openGrade(g){grade=g;const d=PORTAL_DATA[g];$("gradeLabel").textContent=d.label.toUpperCase();$("gradeTitle").textContent=d.title;$("unitGrid").innerHTML="";for(let i=1;i<=10;i++){const u=d.units[i],b=document.createElement("button");b.className="unit-card"+(u?"":" locked");b.innerHTML=`<span class="badge">${u?"AVAILABLE":"COMING SOON"}</span><h3>Unit ${i}</h3><p>${u?u.subtitle:"Vocabulary will be added later."}</p>`;if(u)b.onclick=()=>openUnit(i);$("unitGrid").appendChild(b)}showView("unitsView")}
-function openUnit(n){unit=n;const d=PORTAL_DATA[grade].units[n];words=d.words;loadSets();$("studyLabel").textContent=`${grade.toUpperCase()} · ${PORTAL_DATA[grade].label.toUpperCase()}`;$("studyTitle").textContent=`${d.title} Vocabularies (単語)`;$("studySubtitle").textContent=d.subtitle;$("wordCount").textContent=words.length;setupFilters();updateStats();switchMode("flashcards");showView("studyView")}
+function openGrade(g){
+  grade=g;
+  const d=PORTAL_DATA[g];
+  $("gradeLabel").textContent=d.label.toUpperCase();
+  $("gradeTitle").textContent=d.title;
+  $("unitGrid").innerHTML="";
+  for(let i=1;i<=10;i++){
+    const u=d.units[String(i)];
+    const b=document.createElement("button");
+    b.className="unit-card"+(u?"":" locked");
+    b.innerHTML=`<span class="badge">${u?"AVAILABLE":"COMING SOON"}</span><h3>📖 Unit ${i}</h3><p>${u?u.subtitle:"Vocabulary will be added later."}</p>`;
+    if(u)b.onclick=()=>openContent(u,`Unit ${i}`);
+    $("unitGrid").appendChild(b);
+  }
+  (d.extras||[]).forEach(extra=>{
+    const b=document.createElement("button");
+    b.className="unit-card special-card";
+    const icon=extra.kind==="Story"?"🦊":"💬";
+    b.innerHTML=`<span class="badge">${extra.kind.toUpperCase()}</span><h3>${icon} ${extra.title}</h3><p>${extra.subtitle}</p>`;
+    b.onclick=()=>openContent(extra,extra.title);
+    $("unitGrid").appendChild(b);
+  });
+  showView("unitsView");
+}
+function openContent(d,label){
+  unit=label;
+  words=d.words||[];
+  loadSets();
+  $("studyLabel").textContent=`${PORTAL_DATA[grade].title} · ${label}`;
+  $("studyTitle").textContent=d.title;
+  $("studySubtitle").textContent=d.subtitle||"";
+  $("wordCount").textContent=words.length;
+  setupFilters();
+  updateStats();
+  switchMode("flashcards");
+  showView("studyView");
+}
+function openUnit(n){const d=PORTAL_DATA[grade].units[String(n)];if(d)openContent(d,`Unit ${n}`)}
 
 function renderFlashcards(arr,container){
   container.innerHTML="";
@@ -32,26 +69,31 @@ function renderFlashcards(arr,container){
     card.className="flashcard";
     const fav=favorites.has(x.english);
     const reading=x.reading?`<div>${x.reading}</div>`:"";
-    const meta=`<div class="word-meta"><span class="word-chip">${x.part||"General"}</span><span class="word-chip">${x.category||"word"}</span></div>`;
+    const meta=`<div class="word-meta"><span class="word-chip">${x.category||"word"}</span></div>`;
     card.innerHTML=`<button class="favorite-star" title="Favorite">${fav?"⭐":"☆"}</button><div class="flash-inner"><div class="flash-face" style="background:${colors[i%colors.length]}"><div class="flash-emoji">${x.emoji||"📝"}</div><div class="flash-word">${x.english}</div>${meta}</div><div class="flash-face flash-back" style="background:${colors[(i+3)%colors.length]}"><div class="flash-word">${x.japanese}</div>${reading}<small>${x.example||""}</small></div></div>`;
     card.querySelector(".favorite-star").onclick=e=>{e.stopPropagation();favorites.has(x.english)?favorites.delete(x.english):favorites.add(x.english);saveSets();updateStats();applyFilters()};
     card.onclick=()=>{card.classList.toggle("flipped");markStudied(x);speak(x.english)};
-    container.appendChild(card)
-  })
+    container.appendChild(card);
+  });
 }
 function setupFilters(){
-  const parts=[...new Set(words.map(w=>W(w).part||"General"))];
-  const cats=[...new Set(words.map(w=>W(w).category||"word"))];
-  $("partFilter").innerHTML='<option value="all">All parts</option>'+parts.map(x=>`<option>${x}</option>`).join("");
-  $("categoryFilter").innerHTML='<option value="all">All categories</option>'+cats.map(x=>`<option>${x}</option>`).join("");
-  $("wordSearch").value="";$("partFilter").value="all";$("categoryFilter").value="all";applyFilters()
+  const cats=[...new Set(words.map(w=>W(w).category||"word"))].sort();
+  $("categoryFilter").innerHTML='<option value="all">All word types</option>'+cats.map(x=>`<option value="${x}">${x}</option>`).join("");
+  $("wordSearch").value="";
+  $("categoryFilter").value="all";
+  applyFilters();
 }
 function applyFilters(){
-  const q=norm($("wordSearch")?.value||""),part=$("partFilter")?.value||"all",cat=$("categoryFilter")?.value||"all";
-  const result=words.filter(raw=>{const x=W(raw);return(!q||norm(`${x.english} ${x.japanese} ${x.reading||""}`).includes(q))&&(part==="all"||x.part===part)&&(cat==="all"||x.category===cat)});
-  if($("filterResultText"))$("filterResultText").textContent=`Showing ${result.length} of ${words.length} words`;
-  renderFlashcards(result,$("flashcardGrid"))
+  const q=norm($("wordSearch")?.value||"");
+  const cat=$("categoryFilter")?.value||"all";
+  const result=words.filter(raw=>{
+    const x=W(raw);
+    return (!q||norm(`${x.english} ${x.japanese} ${x.reading||""}`).includes(q))&&(cat==="all"||x.category===cat);
+  });
+  $("filterResultText").textContent=`Showing ${result.length} of ${words.length} words`;
+  renderFlashcards(result,$("flashcardGrid"));
 }
+
 function switchMode(id){document.querySelectorAll(".mode-btn").forEach(b=>b.classList.toggle("active",b.dataset.mode===id));document.querySelectorAll(".game").forEach(g=>g.classList.toggle("active",g.id===id));if(id==="quiz")startQuiz();if(id==="spelling")startSpelling();if(id==="matching")startMatching();if(id==="memory")startMemory();if(id==="hangman")startHangman();if(id==="fillblank")startFill();if(id==="favorites")renderFlashcards(words.filter(w=>favorites.has(en(w))),$("favoriteGrid"));if(id==="wrong")renderFlashcards(words.filter(w=>wrong.has(en(w))),$("wrongGrid"))}
 
 function startQuiz(){quizItems=shuffle(words).slice(0,Math.min(10,words.length));quizIndex=0;quizScore=0;renderQuiz()}
@@ -66,13 +108,14 @@ function startMatching(){const round=shuffle(words).slice(0,Math.min(6,words.len
 function startMemory(){const round=shuffle(words).slice(0,Math.min(6,words.length));const cards=shuffle(round.flatMap((x,i)=>[{text:en(x),id:i,word:en(x)},{text:jp(x),id:i,word:en(x)}]));$("memoryBoard").innerHTML="";let first=null,lock=false,count=0;cards.forEach(x=>{const b=document.createElement("button");b.className="memory-card";b.textContent="?";b.dataset.id=x.id;b.dataset.text=x.text;b.dataset.word=x.word;b.onclick=()=>{if(lock||b.classList.contains("matched")||b===first)return;b.textContent=b.dataset.text;b.classList.add("revealed");if(!first){first=b;return}if(first.dataset.id===b.dataset.id){first.classList.add("matched");b.classList.add("matched");count++;$("memoryCount").textContent=`${count} / ${round.length}`;addXP(10);markStudied(b.dataset.word);first=null}else{lock=true;setTimeout(()=>{first.textContent="?";b.textContent="?";first.classList.remove("revealed");b.classList.remove("revealed");first=null;lock=false},650)}};$("memoryBoard").appendChild(b)});$("memoryCount").textContent=`0 / ${round.length}`}
 
 function startSpeed(){clearInterval(speedTimer);speedSeconds=30;speedPoints=0;$("speedTime").textContent=speedSeconds;$("speedScore").textContent="Score: 0";$("speedStartBtn").classList.add("hidden");nextSpeed();speedTimer=setInterval(()=>{speedSeconds--;$("speedTime").textContent=speedSeconds;if(speedSeconds<=0){clearInterval(speedTimer);$("speedPrompt").textContent=`Finished! Score: ${speedPoints}`;$("speedChoices").innerHTML="";$("speedStartBtn").classList.remove("hidden")}},1000)}
-function nextSpeed(){speedCurrent=shuffle(words)[0];$("speedPrompt").textContent=speedCurrent[1];$("speedChoices").innerHTML="";shuffle([speedCurrent,...shuffle(words.filter(x=>en(x)!==en(speedCurrent))).slice(0,3)]).forEach(o=>{const b=document.createElement("button");b.className="choice";b.textContent=en(o);b.onclick=()=>{if(en(o)===en(speedCurrent)){speedPoints++;addXP(3);markStudied(speedCurrent);clearWrongWord(speedCurrent)}else{markWrong(speedCurrent)}$("speedScore").textContent=`Score: ${speedPoints}`;nextSpeed()};$("speedChoices").appendChild(b)})}
+function nextSpeed(){speedCurrent=shuffle(words)[0];$("speedPrompt").textContent=jp(speedCurrent);$("speedChoices").innerHTML="";shuffle([speedCurrent,...shuffle(words.filter(x=>en(x)!==en(speedCurrent))).slice(0,3)]).forEach(o=>{const b=document.createElement("button");b.className="choice";b.textContent=en(o);b.onclick=()=>{if(en(o)===en(speedCurrent)){speedPoints++;addXP(3);markStudied(speedCurrent);clearWrongWord(speedCurrent)}else{markWrong(speedCurrent)}$("speedScore").textContent=`Score: ${speedPoints}`;nextSpeed()};$("speedChoices").appendChild(b)})}
 
 function startHangman(){const c=shuffle(words)[0],answer=en(c).toLowerCase();let guessed=new Set(),mistakes=0;$("hangmanMeaning").textContent=jp(c);$("hangmanFeedback").textContent="";$("hangmanLetters").innerHTML="";const display=()=>{$("hangmanWord").textContent=[...answer].map(ch=>/[a-z]/.test(ch)?(guessed.has(ch)?ch:"_"):ch).join(" ");$("hangmanMistakes").textContent=mistakes;const won=[...answer].every(ch=>!/[a-z]/.test(ch)||guessed.has(ch));if(won){$("hangmanFeedback").textContent="You got it!";addXP(15);markStudied(c);clearWrongWord(c);document.querySelectorAll("#hangmanLetters button").forEach(b=>b.disabled=true)}if(mistakes>=6){$("hangmanFeedback").textContent=`Answer: ${en(c)}`;markWrong(c);document.querySelectorAll("#hangmanLetters button").forEach(b=>b.disabled=true)}};"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(letter=>{const b=document.createElement("button");b.textContent=letter;b.onclick=()=>{b.disabled=true;const ch=letter.toLowerCase();guessed.add(ch);if(!answer.includes(ch))mistakes++;display()};$("hangmanLetters").appendChild(b)});display()}
 
 function startFill(){fillItems=shuffle(words.filter(w=>example(w))).slice(0,Math.min(10,words.length));fillIndex=0;fillScore=0;renderFill()}
 function renderFill(){const c=fillItems[fillIndex];if(!c){$("fillPrompt").textContent=`Finished! ${fillScore} / ${fillItems.length}`;$("fillJapaneseHint").textContent="";$("fillInput").disabled=true;$("fillCheckBtn").disabled=true;$("fillNextBtn").classList.add("hidden");return}const escaped=en(c).replace(/[.*+?^${}()|[\]\\]/g,"\\$&");$("fillPrompt").textContent=example(c).replace(new RegExp(escaped,"i"),"_____");$("fillJapaneseHint").textContent=`Hint: ${jp(c)}${W(c).reading?`（${W(c).reading}）`:""}`;$("fillProgress").textContent=`Sentence ${fillIndex+1} / ${fillItems.length}`;$("fillScore").textContent=`Score: ${fillScore}`;$("fillInput").value="";$("fillInput").disabled=false;$("fillCheckBtn").disabled=false;$("fillFeedback").textContent="";$("fillNextBtn").classList.add("hidden")}
 function checkFill(){const c=fillItems[fillIndex];if(!c)return;const ok=norm($("fillInput").value)===norm(en(c));$("fillInput").disabled=true;$("fillCheckBtn").disabled=true;if(ok){fillScore++;addXP(12);markStudied(c);clearWrongWord(c);$("fillFeedback").textContent="Correct! 正解！"}else{markWrong(c);$("fillFeedback").textContent=`Answer: ${en(c)}`}$("fillScore").textContent=`Score: ${fillScore}`;$("fillNextBtn").classList.remove("hidden")}
+
 
 document.querySelectorAll(".grade-card").forEach(b=>b.onclick=()=>openGrade(b.dataset.grade));
 $("logoBtn").onclick=goHome;$("backHomeBtn").onclick=goHome;$("backUnitsBtn").onclick=()=>openGrade(grade);
@@ -87,7 +130,6 @@ $("clearWrongBtn").onclick=()=>{wrong.clear();saveSets();updateStats();renderFla
 $("soundBtn").onclick=()=>{const off=$("soundBtn").dataset.off==="1";$("soundBtn").dataset.off=off?"0":"1";$("soundBtn").textContent=off?"🔊":"🔇"};
 $("themeBtn").onclick=()=>{document.body.classList.toggle("dark");$("themeBtn").textContent=document.body.classList.contains("dark")?"🌙":"☀️"};
 $("wordSearch").addEventListener("input",applyFilters);
-$("partFilter").addEventListener("change",applyFilters);
 $("categoryFilter").addEventListener("change",applyFilters);
-$("clearFiltersBtn").onclick=()=>{$("wordSearch").value="";$("partFilter").value="all";$("categoryFilter").value="all";applyFilters()};
+$("clearFiltersBtn").onclick=()=>{$("wordSearch").value="";$("categoryFilter").value="all";applyFilters()};
 updateStats();

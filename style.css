@@ -113,3 +113,15 @@ footer{text-align:center;color:var(--muted);padding:25px}
 @media(max-width:520px){
   .home-btn{font-size:1.08rem;padding:11px 16px;min-height:48px}
 }
+
+/* NH Interactive v1.0 */
+.logo-btn strong{font-size:1.55rem}
+.logo-btn small{font-weight:700;letter-spacing:.03em}
+.home-btn{font-size:1.3rem;min-height:58px;padding:15px 24px}
+.special-card{border-width:2px}
+.special-card .badge{background:#fff0d9;color:#8a4b00}
+.filter-bar{grid-template-columns:minmax(240px,2fr) 1fr auto}
+@media(max-width:720px){
+  .filter-bar{grid-template-columns:1fr 1fr}
+  .filter-bar input{grid-column:1/-1}
+}

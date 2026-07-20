@@ -1,0 +1,152 @@
+{
+  "key": "real-life-english-unit-10",
+  "title": "Unit 10 Real Life English",
+  "subtitle": "Practical Conversation Vocabulary",
+  "kind": "Real Life English",
+  "unit": 10,
+  "words": [
+    {
+      "id": "NH1-RLE-U10-001",
+      "english": "wrong",
+      "japanese": "ぐあいが悪い",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “wrong” as an adjective.",
+      "section": "Real Life English",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U10-002",
+      "english": "stomachache",
+      "japanese": "胃痛、腹痛",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “stomachache”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U10-003",
+      "english": "before",
+      "japanese": "…の前に［の］",
+      "reading": "",
+      "emoji": "➡️",
+      "example": "Practice the word “before”.",
+      "section": "Real Life English",
+      "category": "preposition",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U10-004",
+      "english": "mild",
+      "japanese": "穏やかな、軽い",
+      "reading": "",
+      "emoji": "✨",
+      "example": "Practice using “mild” as an adjective.",
+      "section": "Real Life English",
+      "category": "adjective",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U10-005",
+      "english": "medicine",
+      "japanese": "薬",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “medicine”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U10-006",
+      "english": "rest",
+      "japanese": "休み、休息",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “rest”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U10-007",
+      "english": "headache",
+      "japanese": "頭痛",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “headache”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U10-008",
+      "english": "fever",
+      "japanese": "熱",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “fever”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U10-009",
+      "english": "toothache",
+      "japanese": "歯痛",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “toothache”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U10-010",
+      "english": "food poisoning",
+      "japanese": "食中毒",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: food poisoning",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U10-011",
+      "english": "doctor",
+      "japanese": "医者、医師",
+      "reading": "",
+      "emoji": "📘",
+      "example": "Practice the word “doctor”.",
+      "section": "Real Life English",
+      "category": "noun",
+      "difficulty": 1
+    },
+    {
+      "id": "NH1-RLE-U10-012",
+      "english": "What's wrong?",
+      "japanese": "どうかしたのですか。",
+      "reading": "",
+      "emoji": "🗣️",
+      "example": "Practice saying: What's wrong?",
+      "section": "Real Life English",
+      "category": "expression",
+      "difficulty": 2
+    },
+    {
+      "id": "NH1-RLE-U10-013",
+      "english": "take a rest",
+      "japanese": "ひと休みする",
+      "reading": "",
+      "emoji": "💬",
+      "example": "Practice saying: take a rest",
+      "section": "Real Life English",
+      "category": "phrase",
+      "difficulty": 2
+    }
+  ]
+}
