@@ -51,3 +51,36 @@ footer{text-align:center;color:var(--muted);padding:25px}
   font-weight:800;
   text-align:center;
 }
+
+/* Phase 3.2 — New Horizon book covers */
+.grade-card{
+  align-items:center;
+  gap:18px;
+  overflow:hidden;
+  text-align:left;
+}
+.book-cover{
+  width:108px;
+  height:145px;
+  object-fit:cover;
+  object-position:center;
+  flex:0 0 auto;
+  border-radius:10px;
+  box-shadow:0 8px 22px rgba(0,0,0,.20);
+}
+.grade-card-copy{
+  flex:1;
+}
+.grade-card-copy h2{
+  margin:4px 0 7px;
+}
+@media(max-width:680px){
+  .grade-card{
+    flex-direction:column;
+    text-align:center;
+  }
+  .book-cover{
+    width:142px;
+    height:190px;
+  }
+}

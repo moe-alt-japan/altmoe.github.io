@@ -27,3 +27,10 @@ Commit message:
 
 ## Phase 3.1 improvement
 - The Fill in the Blank game now displays the Japanese meaning and reading of the missing English word as a hint.
+
+
+## Phase 3.2
+- Changed the portal title from NH to **New Horizon**
+- Renamed the grade cards to **New Horizon 1, 2, and 3**
+- Added the uploaded textbook cover images to the homepage
+- Added responsive styling for desktop, tablet, and mobile
