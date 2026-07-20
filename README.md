@@ -1,24 +1,12 @@
-# NH Interactive v1.5.3 — Adventure Update
+# NH Interactive v1.5.4 — Single-file Recovery Build
 
-## New in v1.5.3
-- Playable English Adventure Mode
-- School, Forest, and Castle worlds
-- Four stages per world, including a boss battle
-- World and stage unlocking
-- Coins saved on each device
-- Battle HP, attacks, correct-answer damage, and retry system
-- Adventure progress saved with localStorage
-- Existing multilingual interface, dashboard, games, XP, achievements, and textbook vocabulary preserved
+This recovery release places all CSS, vocabulary data, interface code, Adventure Mode, and battle logic directly inside `index.html`.
 
-## GitHub upload
-Upload all files in this ZIP to the repository root and replace the older files.
+## Upload instructions
+1. Delete the old `index.html`, `script.js`, `style.css`, and `data.js` from the GitHub repository root.
+2. Upload the five files in this package to the repository root.
+3. Commit the changes.
+4. Wait for GitHub Pages deployment to finish.
+5. Open the site and press Ctrl+F5.
 
-Suggested commit message:
-
-`Release NH Interactive v1.5.3 adventure update`
-
-
-## v1.5.3 restoration fix
-- Restores the complete Adventure Mode world and stage interface from v1.5.
-- Fixes enemy/player HP updates and automatic question progression.
-- Adds cache-busting version tags so GitHub Pages loads the matching CSS and JavaScript files after upload.
+You should see `v1.5.4` beside “Learn. Play. Improve.” in the header. This confirms the correct build is live.
