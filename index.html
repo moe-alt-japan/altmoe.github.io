@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>NH Interactive</title>
-  <link rel="stylesheet" href="style.css?v=1.5.3">
+  <title>NH Interactive v1.5.4</title>
+  <link rel="stylesheet" href="css/main.css?v=2.0.0-alpha">
 </head>
 <body>
 
@@ -38,7 +38,7 @@
 <header class="topbar">
   <button id="logoBtn" class="logo-btn">
     <span class="logo-icon">📚</span>
-    <span><strong>NH Interactive</strong><small>Learn. Play. Improve.</small></span>
+    <span><strong>NH Interactive</strong><small>Learn. Play. Improve. · v1.5.4</small></span>
   </button>
   <div class="top-actions">
     <span class="pill">⭐ <b id="xpValue">0</b> XP</span>
@@ -98,15 +98,15 @@
 
   <div class="grade-grid">
     <button class="grade-card grade-blue" data-grade="nh1">
-      <img class="book-cover" src="new-horizon-1.png" alt="New Horizon 1 book cover">
+      <img class="book-cover" src="assets/images/new-horizon-1.png" alt="New Horizon 1 book cover">
       <div class="grade-card-copy"><small>Grade 7</small><h2>New Horizon 1</h2><p>Junior High School Year 1</p></div><b>→</b>
     </button>
     <button class="grade-card grade-green" data-grade="nh2">
-      <img class="book-cover" src="new-horizon-2.png" alt="New Horizon 2 book cover">
+      <img class="book-cover" src="assets/images/new-horizon-2.png" alt="New Horizon 2 book cover">
       <div class="grade-card-copy"><small>Grade 8</small><h2>New Horizon 2</h2><p>Junior High School Year 2</p></div><b>→</b>
     </button>
     <button class="grade-card grade-red" data-grade="nh3">
-      <img class="book-cover" src="new-horizon-3.png" alt="New Horizon 3 book cover">
+      <img class="book-cover" src="assets/images/new-horizon-3.png" alt="New Horizon 3 book cover">
       <div class="grade-card-copy"><small>Grade 9</small><h2>New Horizon 3</h2><p>Junior High School Year 3</p></div><b>→</b>
     </button>
   </div>
@@ -293,7 +293,9 @@
 
 <footer>NH Interactive v1.5.3 · Made for classroom learning · Progress is saved on this device</footer>
 <div id="toast" class="toast"></div>
-<script src="data.js?v=1.5.3"></script>
-<script src="script.js?v=1.5.3"></script>
+
+<script src="data/portal-data.js?v=2.0.0-alpha" defer></script>
+<script src="js/app.js?v=2.0.0-alpha" defer></script>
+<script src="js/adventure.js?v=2.0.0-alpha" defer></script>
 </body>
 </html>
