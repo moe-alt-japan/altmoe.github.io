@@ -15,6 +15,7 @@
   <div class="top-actions">
     <span class="pill">⭐ <b id="xpValue">0</b> XP</span>
     <span class="pill">🏅 Lv. <b id="levelValue">1</b></span>
+    <span class="pill">🔥 <b id="streakValue">1</b> day</span>
     <button id="soundBtn" class="icon-btn" title="Sound">🔊</button>
     <button id="themeBtn" class="icon-btn" title="Theme">☀️</button>
   </div>
@@ -94,13 +95,20 @@
   <section id="flashcards" class="game active">
     <div class="game-head">
       <div><h2>Flip Flashcards</h2><p>Tap a card to reveal the Japanese meaning.</p></div>
-      <button id="shuffleCardsBtn" class="primary-btn">🔀 Shuffle</button>
+      <div class="game-actions">
+        <button id="resetProgressBtn" class="secondary-btn">↺ Reset Unit</button>
+        <button id="shuffleCardsBtn" class="primary-btn">🔀 Shuffle</button>
+      </div>
     </div>
     <div class="filter-bar">
       <input id="wordSearch" type="search" placeholder="Search English or Japanese…">
       <select id="categoryFilter">
         <option value="all">All categories</option>
       </select>
+      <select id="sectionFilter">
+        <option value="all">All sections</option>
+      </select>
+      <button id="directionBtn" class="secondary-btn" type="button" title="Change flashcard direction">EN → JP</button>
       <button id="clearFiltersBtn" class="secondary-btn">Clear</button>
     </div>
     <p id="filterResultText" class="filter-result"></p>
@@ -200,7 +208,7 @@
 </section>
 </main>
 
-<footer>Made for classroom learning · Progress is saved on this device</footer>
+<footer>NH Interactive v1.3 · Made for classroom learning · Progress is saved on this device</footer>
 <div id="toast" class="toast"></div>
 <script src="data.js"></script>
 <script src="script.js"></script>

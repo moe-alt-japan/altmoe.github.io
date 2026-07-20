@@ -125,3 +125,11 @@ footer{text-align:center;color:var(--muted);padding:25px}
   .filter-bar{grid-template-columns:1fr 1fr}
   .filter-bar input{grid-column:1/-1}
 }
+
+/* NH Interactive v1.3 */
+.game-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.filter-bar{grid-template-columns:minmax(230px,2fr) 1fr 1fr auto auto}
+.grade-card:focus-visible,.mode-btn:focus-visible,.primary-btn:focus-visible,.secondary-btn:focus-visible,.choice:focus-visible,.match-item:focus-visible,.memory-card:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.book-cover{background:#fff}
+@media(max-width:950px){.filter-bar{grid-template-columns:1fr 1fr 1fr}.filter-bar input{grid-column:1/-1}}
+@media(max-width:620px){.filter-bar{grid-template-columns:1fr 1fr}.filter-bar input{grid-column:1/-1}.game-head{align-items:flex-start;flex-direction:column}.game-actions{width:100%;justify-content:stretch}.game-actions button{flex:1}}

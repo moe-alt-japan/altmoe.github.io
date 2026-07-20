@@ -2,9 +2,9 @@
 const $=id=>document.getElementById(id);
 const shuffle=a=>[...a].sort(()=>Math.random()-.5);
 const norm=s=>String(s).toLowerCase().trim().replace(/[’']/g,"'").replace(/\s+/g," ");
-const W=w=>Array.isArray(w)?{english:w[0],japanese:w[1],reading:"",emoji:w[2]||"📝",example:w[3]||"",section:"Main Lesson",category:"word",difficulty:1}:w;
+const W=w=>Array.isArray(w)?{english:w[0],japanese:w[1],reading:"",emoji:w[2]||"📝",example:w[3]||"",section:"Main Lesson",category:"word",difficulty:1}:typeof w==="string"?{english:w,japanese:"",reading:"",emoji:"📝",example:"",section:"Main Lesson",category:"word",difficulty:1}:w;
 const en=w=>W(w).english, jp=w=>W(w).japanese, emoji=w=>W(w).emoji||"📝", example=w=>W(w).example||"";
-let grade=null,unit=null,words=[],xp=Number(localStorage.getItem("portalXP")||0);
+let grade=null,unit=null,words=[],xp=Number(localStorage.getItem("portalXP")||0),flashDirection=localStorage.getItem("flashDirection")||"en-jp";
 let studied=new Set(),favorites=new Set(),wrong=new Set();
 let quizItems=[],quizIndex=0,quizScore=0,spellItems=[],spellIndex=0,spellScore=0;
 let fillItems=[],fillIndex=0,fillScore=0,speedTimer=null,speedCurrent=null,speedPoints=0,speedSeconds=30;
@@ -17,10 +17,23 @@ function addXP(n){xp+=n;localStorage.setItem("portalXP",xp);updateStats();toast(
 function updateStats(){$("xpValue").textContent=xp;$("levelValue").textContent=Math.floor(xp/250)+1;$("studiedCount").textContent=studied.size;$("favoriteCount").textContent=favorites.size;$("wrongCount").textContent=wrong.size;$("progressText").textContent=`${studied.size} of ${words.length} words studied`;$("progressBar").style.width=`${words.length?studied.size/words.length*100:0}%`}
 function toast(msg){const t=$("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1100)}
 function speak(text){if(!window.speechSynthesis||$("soundBtn").dataset.off==="1")return;const u=new SpeechSynthesisUtterance(text);u.lang="en-US";speechSynthesis.cancel();speechSynthesis.speak(u)}
-function markStudied(w){studied.add(en(w));saveSets();updateStats()}
-function markWrong(w){wrong.add(en(w));saveSets();updateStats()}
-function clearWrongWord(w){wrong.delete(en(w));saveSets();updateStats()}
+function wordKey(w){return typeof w==="string"?w:en(w)}
+function markStudied(w){studied.add(wordKey(w));saveSets();updateStats()}
+function markWrong(w){wrong.add(wordKey(w));saveSets();updateStats()}
+function clearWrongWord(w){wrong.delete(wordKey(w));saveSets();updateStats()}
 
+function updateStreak(){
+  const today=new Date();
+  const key=today.toISOString().slice(0,10);
+  const last=localStorage.getItem("portalLastStudy");
+  let streak=Number(localStorage.getItem("portalStreak")||0);
+  if(last!==key){
+    const yesterday=new Date(today);yesterday.setDate(today.getDate()-1);
+    streak=last===yesterday.toISOString().slice(0,10)?streak+1:1;
+    localStorage.setItem("portalLastStudy",key);localStorage.setItem("portalStreak",streak);
+  }
+  $("streakValue").textContent=streak||1;
+}
 function goHome(){showView("homeView")}
 function openGrade(g){
   grade=g;
@@ -69,8 +82,10 @@ function renderFlashcards(arr,container){
     card.className="flashcard";
     const fav=favorites.has(x.english);
     const reading=x.reading?`<div>${x.reading}</div>`:"";
-    const meta=`<div class="word-meta"><span class="word-chip">${x.category||"word"}</span></div>`;
-    card.innerHTML=`<button class="favorite-star" title="Favorite">${fav?"⭐":"☆"}</button><div class="flash-inner"><div class="flash-face" style="background:${colors[i%colors.length]}"><div class="flash-emoji">${x.emoji||"📝"}</div><div class="flash-word">${x.english}</div>${meta}</div><div class="flash-face flash-back" style="background:${colors[(i+3)%colors.length]}"><div class="flash-word">${x.japanese}</div>${reading}<small>${x.example||""}</small></div></div>`;
+    const meta=`<div class="word-meta"><span class="word-chip">${x.category||"word"}</span><span class="word-chip">${x.section||"Main Lesson"}</span></div>`;
+    const front=flashDirection==="en-jp"?`<div class="flash-emoji">${x.emoji||"📝"}</div><div class="flash-word">${x.english}</div>${meta}`:`<div class="flash-word">${x.japanese}</div>${reading}${meta}`;
+    const back=flashDirection==="en-jp"?`<div class="flash-word">${x.japanese}</div>${reading}<small>${x.example||""}</small>`:`<div class="flash-emoji">${x.emoji||"📝"}</div><div class="flash-word">${x.english}</div><small>${x.example||""}</small>`;
+    card.innerHTML=`<button class="favorite-star" title="Favorite">${fav?"⭐":"☆"}</button><div class="flash-inner"><div class="flash-face" style="background:${colors[i%colors.length]}">${front}</div><div class="flash-face flash-back" style="background:${colors[(i+3)%colors.length]}">${back}</div></div>`;
     card.querySelector(".favorite-star").onclick=e=>{e.stopPropagation();favorites.has(x.english)?favorites.delete(x.english):favorites.add(x.english);saveSets();updateStats();applyFilters()};
     card.onclick=()=>{card.classList.toggle("flipped");markStudied(x);speak(x.english)};
     container.appendChild(card);
@@ -78,17 +93,22 @@ function renderFlashcards(arr,container){
 }
 function setupFilters(){
   const cats=[...new Set(words.map(w=>W(w).category||"word"))].sort();
+  const sections=[...new Set(words.map(w=>W(w).section||"Main Lesson"))].sort();
   $("categoryFilter").innerHTML='<option value="all">All word types</option>'+cats.map(x=>`<option value="${x}">${x}</option>`).join("");
+  $("sectionFilter").innerHTML='<option value="all">All sections</option>'+sections.map(x=>`<option value="${x}">${x}</option>`).join("");
   $("wordSearch").value="";
   $("categoryFilter").value="all";
+  $("sectionFilter").value="all";
+  $("directionBtn").textContent=flashDirection==="en-jp"?"EN → JP":"JP → EN";
   applyFilters();
 }
 function applyFilters(){
   const q=norm($("wordSearch")?.value||"");
   const cat=$("categoryFilter")?.value||"all";
+  const section=$("sectionFilter")?.value||"all";
   const result=words.filter(raw=>{
     const x=W(raw);
-    return (!q||norm(`${x.english} ${x.japanese} ${x.reading||""}`).includes(q))&&(cat==="all"||x.category===cat);
+    return (!q||norm(`${x.english} ${x.japanese} ${x.reading||""}`).includes(q))&&(cat==="all"||x.category===cat)&&(section==="all"||(x.section||"Main Lesson")===section);
   });
   $("filterResultText").textContent=`Showing ${result.length} of ${words.length} words`;
   renderFlashcards(result,$("flashcardGrid"));
@@ -131,5 +151,9 @@ $("soundBtn").onclick=()=>{const off=$("soundBtn").dataset.off==="1";$("soundBtn
 $("themeBtn").onclick=()=>{document.body.classList.toggle("dark");$("themeBtn").textContent=document.body.classList.contains("dark")?"🌙":"☀️"};
 $("wordSearch").addEventListener("input",applyFilters);
 $("categoryFilter").addEventListener("change",applyFilters);
-$("clearFiltersBtn").onclick=()=>{$("wordSearch").value="";$("categoryFilter").value="all";applyFilters()};
+$("sectionFilter").addEventListener("change",applyFilters);
+$("directionBtn").onclick=()=>{flashDirection=flashDirection==="en-jp"?"jp-en":"en-jp";localStorage.setItem("flashDirection",flashDirection);$("directionBtn").textContent=flashDirection==="en-jp"?"EN → JP":"JP → EN";applyFilters()};
+$("resetProgressBtn").onclick=()=>{if(!confirm("Reset studied, favorites, and wrong answers for this unit?"))return;studied.clear();favorites.clear();wrong.clear();saveSets();updateStats();applyFilters();toast("Unit progress reset")};
+$("clearFiltersBtn").onclick=()=>{$("wordSearch").value="";$("categoryFilter").value="all";$("sectionFilter").value="all";applyFilters()};
+updateStreak();
 updateStats();

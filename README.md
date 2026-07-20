@@ -1,6 +1,16 @@
-# NH Interactive v1.2
+# NH Interactive v1.3
 
 **Learn. Play. Improve.**
+
+## What is new in v1.3
+- Fixed and bundled all three New Horizon textbook covers.
+- Added an English → Japanese / Japanese → English flashcard direction switch.
+- Added a section filter for Part 1, Part 2, Part 3, and other lesson sections.
+- Added a daily study streak indicator.
+- Added a Reset Unit button for clearing one unit’s studied, favorite, and wrong-answer data.
+- Improved flashcard labels so both word type and lesson section are visible.
+- Fixed progress recording in Matching and Memory modes.
+- Improved keyboard focus and responsive layouts.
 
 ## Complete textbook structure
 - New Horizon 1: Units 1–10
@@ -11,35 +21,17 @@
 - NH1: 608 entries
 - NH2: 509 entries
 - NH3: 417 entries
-- Total: 1534 entries
-
-## Additional sections
-- Real Life English
-- Read and Think vocabulary stored internally
-- Special readings and stories
-- Gon, the Fox
-- History of Clocks
-- A Glass of Milk
-- Pictures and Our Beautiful Planet
-- Crested Ibises
-- Discover Japan
-- A Mother’s Lullaby
-- Power Your Future
-- Coloring Outside the Lines
+- Total: 1,534 entries
 
 ## GitHub upload
-Extract the ZIP and upload all files and folders to the repository root. Allow replacement of the existing files.
+1. Extract the ZIP.
+2. Upload every file to the repository root.
+3. Allow GitHub to replace the old files.
+4. Keep the textbook-cover filenames exactly as shown:
+   - `new-horizon-1.png`
+   - `new-horizon-2.png`
+   - `new-horizon-3.png`
 
 Suggested commit title:
 
-`Release NH Interactive v1.2 with NH1, NH2, and NH3`
-
-
-## v1.2.1 Book-cover fix
-The homepage now loads the textbook covers from the repository root:
-
-- `new-horizon-1.png`
-- `new-horizon-2.png`
-- `new-horizon-3.png`
-
-Upload these three PNG files together with `index.html`. This avoids missing-image errors when folders are not preserved during a GitHub web upload.
+`Release NH Interactive v1.3`
