@@ -33,3 +33,13 @@ Extract the ZIP and upload all files and folders to the repository root. Allow r
 Suggested commit title:
 
 `Release NH Interactive v1.2 with NH1, NH2, and NH3`
+
+
+## v1.2.1 Book-cover fix
+The homepage now loads the textbook covers from the repository root:
+
+- `new-horizon-1.png`
+- `new-horizon-2.png`
+- `new-horizon-3.png`
+
+Upload these three PNG files together with `index.html`. This avoids missing-image errors when folders are not preserved during a GitHub web upload.
