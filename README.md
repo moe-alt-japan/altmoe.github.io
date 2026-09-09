@@ -1,22 +1,16 @@
-# Moe 3D Avatar Test — Step 2 v3
+# Moe's English Practice — Step 3 Shop v1
 
-Fix in v3:
-- The previous anime sample URL was broken.
-- v3 uses the masculine VRoid sample from the `madjin/vrm-samples`
-  GitHub repository through `raw.githubusercontent.com`.
-- The page still uses real Three.js + VRM rendering.
+Upload every file and the `assets` folder to the same GitHub Pages repository.
 
-Upload/replace:
-- index.html
-- style.css
-- script.js
+## Working now
+- Local VRM 3D avatar
+- Rotate, zoom, pan, quick views
+- 1,250 starting coins
+- Shop categories
+- Buy and equip flow
+- Inventory view
+- Browser persistence with localStorage
+- Background rewards visibly change the 3D scene
 
-Check the yellow badge:
-3D AVATAR TEST • STEP 2 • V3
-
-This is still a temporary anime 3D model, not final Moe.
-The goal is to confirm:
-- model loads
-- 360° rotation works
-- zoom works
-- performance is acceptable
+## Important prototype note
+The current VRM is one complete character model. Clothing/accessory purchases are saved and shown as equipped in the UI, but they cannot physically replace clothing on the 3D body until separate compatible 3D clothing/accessory assets are added. This prototype intentionally proves the progression/shop logic first.
