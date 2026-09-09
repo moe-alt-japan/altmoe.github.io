@@ -1,12 +1,12 @@
-# Avatar Step 1 Test
+# Avatar Step 1 Test v2
 
-This is deliberately separate from the real vocabulary website.
+Fixes:
+- Shows the full professional anime avatar instead of cropping the head off.
+- Uses `object-fit: contain` so the full character remains visible.
+- Gives the shop side a little more room.
+- Still separate from the real vocabulary website.
 
-Upload these three files to a NEW GitHub Pages test repository:
+Upload these files to the same test repository, replacing the old ones:
 - index.html
 - style.css
 - moe-avatar.jpg
-
-Then enable GitHub Pages and open the test site.
-
-The purpose is only to check the approved professional anime avatar on a real webpage before we create interchangeable outfits.
