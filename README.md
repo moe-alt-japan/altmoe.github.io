@@ -1,18 +1,12 @@
-# English Shop Prototype v2
+# Avatar Step 1 Test
 
-This is a standalone visual prototype. It does NOT replace the vocabulary website.
+This is deliberately separate from the real vocabulary website.
 
-What works in v2:
-- The anime-style avatar is built directly into the page, so it cannot disappear because of missing image files.
-- Shop item art is also built into the page.
-- "Try On" visibly changes clothes, hats, accessories, pets, and backgrounds.
-- Buy / Coins / My Items / Save / Reset / Random are functional.
-- Progress is saved locally in the browser with localStorage.
-- Prices are temporary placeholders.
-
-For testing on GitHub Pages, upload:
+Upload these three files to a NEW GitHub Pages test repository:
 - index.html
 - style.css
-- script.js
+- moe-avatar.jpg
 
-Keep this in a separate test repository until the design is approved.
+Then enable GitHub Pages and open the test site.
+
+The purpose is only to check the approved professional anime avatar on a real webpage before we create interchangeable outfits.
