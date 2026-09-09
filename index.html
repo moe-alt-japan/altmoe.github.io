@@ -1,57 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Avatar Step 1 Test</title>
-<link rel="stylesheet" href="style.css?v=4">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moe's English Practice - English Shop</title>
+<link rel="stylesheet" href="style.css?v=1">
 </head>
 <body>
-<header>
-  <div class="brand">📖 <b>Moe's English Practice</b></div>
-  <div class="tag">AVATAR TEST • STEP 1 • V4</div>
+<header class="topbar">
+  <div class="brand">📖 Moe's English Practice</div>
+  <nav>
+    <button>🏠 Home</button>
+    <button>🎮 Games</button>
+    <button class="active">🛒 Shop</button>
+    <button id="inventoryBtn">🎒 Inventory</button>
+    <button>📊 Progress</button>
+  </nav>
+  <div class="coin-pill">🪙 <span id="topCoins">1250</span></div>
 </header>
 
-<main>
-  <section class="avatar-panel">
-    <div class="scene">
-      <img src="moe-avatar-v3.jpg?v=4" alt="Moe anime avatar">
-      <div class="speech">Let's keep learning English!</div>
+<main class="layout">
+  <aside class="profile-card">
+    <div class="avatar-wrap">
+      <img src="beginner-avatar.jpg" alt="Beginner avatar">
+    </div>
+    <div class="profile-badge">
+      <div class="name">Moe</div>
+      <div class="level">Level 1</div>
+      <div class="xp">⭐ 0 / 500 XP</div>
+    </div>
+    <div class="coin-bottom">🪙 <span id="sideCoins">1250</span></div>
+  </aside>
+
+  <section class="shop">
+    <div class="hero">
+      <div>
+        <h1>🛒 English Shop</h1>
+        <p>Use your coins to get new items and customize your avatar!</p>
+      </div>
+      <div class="hero-note">Learn • Play • Customize • Be You! 😊</div>
     </div>
 
-    <div class="profile">
-      <div><strong>Moe</strong><span>Level 12</span></div>
-      <div class="stats"><span>⭐ 3,450 XP</span><span>🪙 620 Coins</span></div>
-    </div>
-  </section>
-
-  <section class="preview">
-    <h1>English Shop</h1>
-    <p class="subtitle">Step 1 — checking our avatar on a real webpage</p>
-
-    <div class="test-card">
-      <div class="check">✓</div>
-      <h2>White English Hoodie</h2>
-      <p>Currently equipped</p>
-      <button>Equipped</button>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-cat="all">👕 All</button>
+      <button class="tab" data-cat="tops">👕 Tops</button>
+      <button class="tab" data-cat="bottoms">👖 Bottoms</button>
+      <button class="tab" data-cat="shoes">👟 Shoes</button>
+      <button class="tab" data-cat="accessories">🧢 Accessories</button>
+      <button class="tab" data-cat="bags">🎒 Bags</button>
+      <button class="tab" data-cat="pets">🐾 Pets</button>
+      <button class="tab" data-cat="backgrounds">🖼️ Backgrounds</button>
     </div>
 
-    <div class="notes">
-      <h2>What are we checking?</h2>
-      <p>👦 Character quality and style</p>
-      <p>📏 Avatar size on your screen</p>
-      <p>💻 How sharp it looks on GitHub Pages</p>
-      <p>⚡ Loading speed on Chromebook/tablet</p>
-      <p>🏪 Whether this feels right for our future shop</p>
-    </div>
+    <section class="section">
+      <div class="section-title">⭐ Recommended for You</div>
+      <div class="cards" id="recommended"></div>
+    </section>
 
-    <div class="coming">
-      <b>Next, only after we approve this avatar:</b><br>
-      School Uniform • Black Hoodie • Casual Jacket • Hats • Pets
-    </div>
+    <section class="section">
+      <div class="section-title">🔰 Basic Items <small>Simple and classic items to get started!</small></div>
+      <div class="cards" id="basic"></div>
+    </section>
   </section>
 </main>
 
-<footer>This is only a visual test. Your vocabulary website is not included or changed.</footer>
+<div class="modal hidden" id="inventoryModal">
+  <div class="modal-card">
+    <button class="close" id="closeInventory">✕</button>
+    <h2>🎒 My Inventory</h2>
+    <p class="muted">Items you own appear here.</p>
+    <div class="inventory-grid" id="inventoryGrid"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js?v=1"></script>
 </body>
 </html>

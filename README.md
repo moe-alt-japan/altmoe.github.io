@@ -1,12 +1,22 @@
-# Avatar Step 1 Test v4
+# English Shop — Beginner Prototype v1
 
-Fix:
-- Moved the "Let's keep learning English!" speech bubble away from the character's face.
-- The bubble is now near the bottom-left of the avatar panel.
-- Header shows `AVATAR TEST • STEP 1 • V4` so you can confirm the newest version is loaded.
+This is a separate GitHub Pages test site.
 
-Replace:
+What works:
+- Beginner Level 1 avatar
+- 1,250 starting coins
+- Shop category tabs
+- Buy items
+- Equip owned items
+- Inventory popup
+- LocalStorage saves coins, owned items, and equipped items
+- Starter clothes are already owned
+- Premium items must be bought
+
+Upload these files to a NEW test repository:
 - index.html
 - style.css
+- script.js
+- beginner-avatar.jpg
 
-The avatar image file can stay the same (`moe-avatar-v3.jpg`).
+This does NOT modify the real vocabulary website.
