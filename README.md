@@ -1,16 +1,18 @@
-# English Shop Prototype v1
+# English Shop Prototype v2
 
-A standalone visual prototype for the future Moe's English Practice shop/avatar system.
+This is a standalone visual prototype. It does NOT replace the vocabulary website.
 
-Current prototype features:
-- Anime-inspired shop layout based on the concept mockup
-- Profile with XP, level, and coins
-- Clothes, hats, accessories, pets, and backgrounds tabs
-- Try On button
-- Buy button with temporary demo prices
-- My Items inventory
-- Locked level rewards
-- Save/reset/random avatar preview controls
-- Browser localStorage for the demo state
+What works in v2:
+- The anime-style avatar is built directly into the page, so it cannot disappear because of missing image files.
+- Shop item art is also built into the page.
+- "Try On" visibly changes clothes, hats, accessories, pets, and backgrounds.
+- Buy / Coins / My Items / Save / Reset / Random are functional.
+- Progress is saved locally in the browser with localStorage.
+- Prices are temporary placeholders.
 
-Important: this is a **preview**, not yet connected to the real New Horizon vocabulary site. The avatar image is currently a concept image and Try On changes the selected outfit label rather than redrawing the avatar. Once the design is approved, the next step is to build true layered avatar parts and connect coins/XP to the existing games.
+For testing on GitHub Pages, upload:
+- index.html
+- style.css
+- script.js
+
+Keep this in a separate test repository until the design is approved.
