@@ -1,8 +1,60 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1764a5"><title>Moe's English Practice — 3D Shop</title><link rel="stylesheet" href="style.css?v=5"></head><body>
-<header class="topbar"><div class="brand">📖 Moe's English Practice</div><nav class="nav"><button class="nav-btn active" data-page="home">Home</button><button class="nav-btn" disabled>Games</button><button class="nav-btn" data-page="shop">Shop</button><button class="nav-btn" data-page="inventory">Inventory</button><button class="nav-btn" disabled>Progress</button></nav><div class="coin-pill">🪙 <span class="coinCount">1,250</span></div></header>
-<main class="layout"><aside class="panel profile-card"><div class="profile-title-row"><div><div class="eyebrow">BEGINNER AVATAR</div><h1>Moe</h1></div><span class="level-badge">LV 1</span></div><div class="xp-label"><span>⭐ XP</span><strong>0 / 500</strong></div><div class="xp-track"><div class="xp-fill"></div></div><div class="stat-grid"><div class="stat"><span>🪙</span><strong class="coinCount">1,250</strong><small>Coins</small></div><div class="stat"><span>🎒</span><strong id="ownedCount">3</strong><small>Owned</small></div></div><div class="starter-note"><strong>Beginner progression</strong><p>Earn coins in English games, buy rewards, and build your collection.</p></div><button class="wide-btn" data-page="shop">🛍️ Open Shop</button><button class="wide-btn ghost" data-page="inventory">🎒 Inventory</button></aside>
-<section class="viewer-card"><div class="viewer-toolbar"><div class="viewer-title"><strong>3D Avatar</strong><span>STEP 3 • SHOP SYSTEM</span></div><button id="resetBtn" class="primary-btn">↻ Reset View</button></div><div id="viewer"></div><div id="loading" class="loading"><div class="spinner"></div><strong>Loading your VRM…</strong><span>Local beginner model</span></div><div class="view-buttons"><button data-view="front" class="view-btn active">Front</button><button data-view="back" class="view-btn">Back</button><button data-view="left" class="view-btn">Left</button><button data-view="right" class="view-btn">Right</button></div><div class="gesture-hint">🖱️ Drag = rotate • Wheel = zoom • Right-drag = move</div></section>
-<aside class="panel controls-card"><div class="eyebrow">EQUIPPED</div><h2>Beginner Set</h2><div id="equippedList" class="equipped-list"></div><hr><h3>Quick views</h3><div class="quick-grid"><button data-view="front">Front</button><button data-view="back">Back</button><button data-view="left">Left</button><button data-view="right">Right</button></div><div class="status-card" id="modelStatus"><span class="status-dot"></span><div><strong>Preparing model…</strong><small>Waiting for local VRM.</small></div></div><div class="next-box"><strong>Step 3</strong><p>Shop purchases and equipped choices now save in this browser. Background rewards already change the 3D scene.</p></div></aside></main>
-<div id="overlay" class="overlay hidden"><section class="shop-modal"><div class="modal-head"><div><div class="eyebrow" id="modalEyebrow">REWARD SHOP</div><h2 id="modalTitle">Shop</h2></div><button id="closeModal" class="close-btn">✕</button></div><div id="categoryTabs" class="tabs"></div><div id="itemGrid" class="item-grid"></div><div class="modal-foot"><span>🪙 <strong class="coinCount">1,250</strong> coins</span><small id="shopNote">Items are saved on this device.</small></div></section></div>
-<div id="toast" class="toast hidden"></div><div id="errorBox" class="error hidden"></div>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/","@pixiv/three-vrm":"https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3.4.2/lib/three-vrm.module.js"}}</script><script type="module" src="script.js?v=5"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1764a5">
+  <title>Moe's English Practice — 3D Shop</title>
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">📖 Moe's English Practice</div>
+  <nav class="nav">
+    <button class="nav-btn active">Home</button>
+    <button class="nav-btn" disabled>Games</button>
+    <button class="nav-btn" id="shopNav">Shop</button>
+    <button class="nav-btn" id="inventoryNav">Inventory</button>
+    <button class="nav-btn" disabled>Progress</button>
+  </nav>
+  <div class="coin-pill">🪙 <span class="coinCount">1,250</span></div>
+</header>
+
+<main class="layout">
+  <aside class="panel profile-card">
+    <div class="profile-title-row"><div><div class="eyebrow">BEGINNER AVATAR</div><h1>Moe</h1></div><span class="level-badge">LV 1</span></div>
+    <div class="xp-label"><span>⭐ XP</span><strong>0 / 500</strong></div>
+    <div class="xp-track"><div class="xp-fill"></div></div>
+    <div class="stat-grid"><div class="stat"><span>🪙</span><strong class="coinCount">1,250</strong><small>Coins</small></div><div class="stat"><span>🎒</span><strong id="ownedCount">3</strong><small>Owned</small></div></div>
+    <div class="starter-note"><strong>Beginner progression</strong><p>Earn coins in English games, buy rewards, and build your collection.</p></div>
+    <button class="wide-btn" id="openShop">🛍️ Open Shop</button>
+    <button class="wide-btn ghost" id="openInventory">🎒 Inventory</button>
+  </aside>
+
+  <section class="viewer-card">
+    <div class="viewer-toolbar"><div class="viewer-title"><strong>3D Avatar</strong><span>STEP 3 • V3 • ROOT VRM</span></div><button id="resetBtn" class="primary-btn">↻ Reset View</button></div>
+    <div id="viewer"></div>
+    <div id="loading" class="loading"><div class="spinner"></div><strong>Loading your VRM…</strong><span id="loadDetail">Local beginner model</span></div>
+    <div class="view-buttons"><button data-view="front" class="view-btn active">Front</button><button data-view="back" class="view-btn">Back</button><button data-view="left" class="view-btn">Left</button><button data-view="right" class="view-btn">Right</button></div>
+    <div class="gesture-hint">🖱️ Drag = rotate • Wheel = zoom • Right-drag = move</div>
+  </section>
+
+  <aside class="panel controls-card">
+    <div class="eyebrow">EQUIPPED</div><h2>Beginner Set</h2>
+    <div id="equippedList" class="equipped-list"></div><hr>
+    <h3>Quick views</h3><div class="quick-grid"><button data-view="front">Front</button><button data-view="back">Back</button><button data-view="left">Left</button><button data-view="right">Right</button></div>
+    <div class="status-card" id="modelStatus"><span class="status-dot"></span><div><strong>Preparing model…</strong><small>Waiting for local VRM.</small></div></div>
+    <div class="next-box"><strong>Step 3</strong><p>Shop and Inventory are enabled after the avatar viewer starts.</p></div>
+  </aside>
+</main>
+
+<div id="overlay" class="overlay hidden"><section class="shop-modal">
+  <div class="modal-head"><div><div class="eyebrow" id="modalEyebrow">REWARD SHOP</div><h2 id="modalTitle">Shop</h2></div><button id="closeModal" class="close-btn">✕</button></div>
+  <div id="categoryTabs" class="tabs"></div><div id="itemGrid" class="item-grid"></div>
+  <div class="modal-foot"><span>🪙 <strong class="coinCount">1,250</strong> coins</span><small>Items are saved on this device.</small></div>
+</section></div>
+<div id="toast" class="toast hidden"></div><div id="errorBox" class="error hidden"></div><input id="vrmPicker" type="file" accept=".vrm" hidden>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/","@pixiv/three-vrm":"https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3.4.2/lib/three-vrm.module.js"}}</script>
+<script type="module" src="script.js?v=7"></script>
+</body></html>
