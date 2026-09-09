@@ -1,80 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moe's English Practice - English Shop</title>
-<link rel="stylesheet" href="style.css?v=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moe's English Practice - 3D Avatar Test</title>
+  <link rel="stylesheet" href="style.css?v=1" />
 </head>
 <body>
-<header class="topbar">
+<header>
   <div class="brand">📖 Moe's English Practice</div>
-  <nav>
-    <button>🏠 Home</button>
-    <button>🎮 Games</button>
-    <button class="active">🛒 Shop</button>
-    <button id="inventoryBtn">🎒 Inventory</button>
-    <button>📊 Progress</button>
-  </nav>
-  <div class="coin-pill">🪙 <span id="topCoins">1250</span></div>
+  <div class="tag">3D AVATAR TEST • STEP 2</div>
 </header>
 
-<main class="layout">
-  <aside class="profile-card">
-    <div class="avatar-wrap">
-      <img src="beginner-avatar.jpg" alt="Beginner avatar">
+<main>
+  <aside class="panel stats">
+    <h2>Moe</h2>
+    <div class="level">Level 1</div>
+    <hr>
+    <div>⭐ 0 / 500 XP</div>
+    <div>🪙 1,250</div>
+    <div class="note">
+      Temporary 3D test model.<br>
+      We are testing rotation and performance first.
     </div>
-    <div class="profile-badge">
-      <div class="name">Moe</div>
-      <div class="level">Level 1</div>
-      <div class="xp">⭐ 0 / 500 XP</div>
-    </div>
-    <div class="coin-bottom">🪙 <span id="sideCoins">1250</span></div>
   </aside>
 
-  <section class="shop">
-    <div class="hero">
-      <div>
-        <h1>🛒 English Shop</h1>
-        <p>Use your coins to get new items and customize your avatar!</p>
-      </div>
-      <div class="hero-note">Learn • Play • Customize • Be You! 😊</div>
+  <section class="viewer-card">
+    <div id="viewer"></div>
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <strong>Loading 3D avatar…</strong>
+      <span>This can take a few seconds.</span>
     </div>
 
-    <div class="tabs" id="tabs">
-      <button class="tab active" data-cat="all">👕 All</button>
-      <button class="tab" data-cat="tops">👕 Tops</button>
-      <button class="tab" data-cat="bottoms">👖 Bottoms</button>
-      <button class="tab" data-cat="shoes">👟 Shoes</button>
-      <button class="tab" data-cat="accessories">🧢 Accessories</button>
-      <button class="tab" data-cat="bags">🎒 Bags</button>
-      <button class="tab" data-cat="pets">🐾 Pets</button>
-      <button class="tab" data-cat="backgrounds">🖼️ Backgrounds</button>
+    <div class="hint">
+      🖱️ Drag to rotate &nbsp; • &nbsp; 🖱️ Wheel to zoom &nbsp; • &nbsp; Right-drag to move
     </div>
 
-    <section class="section">
-      <div class="section-title">⭐ Recommended for You</div>
-      <div class="cards" id="recommended"></div>
-    </section>
-
-    <section class="section">
-      <div class="section-title">🔰 Basic Items <small>Simple and classic items to get started!</small></div>
-      <div class="cards" id="basic"></div>
-    </section>
+    <button id="resetBtn" class="reset">↻ Reset View</button>
   </section>
+
+  <aside class="panel controls">
+    <h2>Avatar Controls</h2>
+    <p>🖱️ Drag to rotate</p>
+    <p>🔍 Scroll to zoom</p>
+    <p>↔️ Right-drag to pan</p>
+    <p>↻ Reset the camera</p>
+    <hr>
+    <h3>Test Checklist</h3>
+    <p>✓ Smooth rotation?</p>
+    <p>✓ Fast enough on Chromebook?</p>
+    <p>✓ Character stays sharp?</p>
+    <p>✓ 3D feels worth using?</p>
+  </aside>
 </main>
 
-<div class="modal hidden" id="inventoryModal">
-  <div class="modal-card">
-    <button class="close" id="closeInventory">✕</button>
-    <h2>🎒 My Inventory</h2>
-    <p class="muted">Items you own appear here.</p>
-    <div class="inventory-grid" id="inventoryGrid"></div>
-  </div>
-</div>
+<div id="errorBox" class="error hidden"></div>
 
-<div class="toast" id="toast"></div>
-
-<script src="script.js?v=1"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+    "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3.4.2/lib/three-vrm.module.js"
+  }
+}
+</script>
+<script type="module" src="script.js?v=1"></script>
 </body>
 </html>

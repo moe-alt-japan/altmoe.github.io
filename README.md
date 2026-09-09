@@ -1,22 +1,31 @@
-# English Shop — Beginner Prototype v1
+# Moe 3D Avatar Test — Step 2 v1
 
-This is a separate GitHub Pages test site.
+This is the first REAL 3D experiment.
 
-What works:
-- Beginner Level 1 avatar
-- 1,250 starting coins
-- Shop category tabs
-- Buy items
-- Equip owned items
-- Inventory popup
-- LocalStorage saves coins, owned items, and equipped items
-- Starter clothes are already owned
-- Premium items must be bought
+WHAT THIS VERSION TESTS
+- Real browser-rendered 3D
+- Click/drag rotation
+- Mouse-wheel zoom
+- Right-drag pan
+- Reset View
+- GitHub Pages compatibility
 
-Upload these files to a NEW test repository:
+IMPORTANT
+This first test uses a temporary CC0 VRM sample model hosted on GitHub.
+It is NOT the final Moe character. The purpose is only to prove that
+a real 3D avatar can run smoothly in your website.
+
+FILES TO UPLOAD
 - index.html
 - style.css
 - script.js
-- beginner-avatar.jpg
 
-This does NOT modify the real vocabulary website.
+The page loads Three.js, three-vrm, and the temporary VRM model from the internet.
+
+NEXT, IF THIS WORKS WELL
+We replace the sample character with a custom beginner Moe model:
+- anime boy
+- white T-shirt
+- black pants
+- white sneakers
+- matching our approved visual direction

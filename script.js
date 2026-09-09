@@ -1,88 +1,135 @@
 
-const ITEMS = [
-{id:"white-hoodie",name:"White English Hoodie",cat:"tops",price:800,art:"🤍",group:"recommended"},
-{id:"headphones",name:"Headphones (Black)",cat:"accessories",price:500,art:"🎧",group:"recommended"},
-{id:"school-bag",name:"School Backpack",cat:"bags",price:600,art:"🎒",group:"recommended"},
-{id:"white-sneakers",name:"White Sneakers",cat:"shoes",price:700,art:"👟",group:"recommended"},
-{id:"black-cap",name:"Cap (Black)",cat:"accessories",price:400,art:"🧢",group:"recommended"},
-{id:"white-shirt",name:"White T-Shirt",cat:"tops",price:0,art:"👕",group:"basic",starter:true},
-{id:"black-shirt",name:"Black T-Shirt",cat:"tops",price:300,art:"👕",group:"basic"},
-{id:"gray-hoodie",name:"Gray Hoodie",cat:"tops",price:500,art:"🧥",group:"basic"},
-{id:"blue-jeans",name:"Jeans (Blue)",cat:"bottoms",price:400,art:"👖",group:"basic"},
-{id:"black-joggers",name:"Jogger Pants (Black)",cat:"bottoms",price:400,art:"👖",group:"basic"},
-{id:"navy-shorts",name:"Shorts (Navy)",cat:"bottoms",price:300,art:"🩳",group:"basic"},
-{id:"starter-pants",name:"Starter Pants",cat:"bottoms",price:0,art:"👖",group:"basic",starter:true},
-{id:"starter-shoes",name:"Starter Sneakers",cat:"shoes",price:0,art:"👟",group:"basic",starter:true},
-{id:"shiba",name:"Shiba Pet",cat:"pets",price:1000,art:"🐕",group:"recommended"},
-{id:"school-bg",name:"School Background",cat:"backgrounds",price:700,art:"🏫",group:"recommended"}
-];
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { VRMLoaderPlugin } from '@pixiv/three-vrm';
 
-let state = JSON.parse(localStorage.getItem("moeShopState") || "null") || {
-  coins:1250,
-  owned:["white-shirt","starter-pants","starter-shoes"],
-  equipped:{tops:"white-shirt",bottoms:"starter-pants",shoes:"starter-shoes"}
-};
+const viewer = document.getElementById('viewer');
+const loading = document.getElementById('loading');
+const errorBox = document.getElementById('errorBox');
 
-function save(){localStorage.setItem("moeShopState",JSON.stringify(state))}
-function coins(){document.querySelectorAll("#topCoins,#sideCoins").forEach(e=>e.textContent=state.coins)}
-function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1600)}
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xcbeeff);
 
-function renderCard(item){
-  const owned=state.owned.includes(item.id);
-  const equipped=state.equipped[item.cat]===item.id;
-  const price = item.price===0 ? "Starter" : `🪙 ${item.price}`;
-  let button = `<button class="action" data-id="${item.id}">Buy</button>`;
-  if(equipped) button=`<button class="action equipped" disabled>Equipped</button>`;
-  else if(owned) button=`<button class="action ownedbtn" data-id="${item.id}">Equip</button>`;
-  return `<article class="item-card" data-cat="${item.cat}">
-    <div class="item-art">${item.art}</div>
-    <h3>${item.name}</h3>
-    <div class="price ${owned?'owned':''}">${price}</div>
-    ${button}
-  </article>`;
-}
+const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+camera.position.set(0, 1.25, 3.2);
 
-function render(cat="all"){
-  const rec=ITEMS.filter(x=>x.group==="recommended"&&(cat==="all"||x.cat===cat));
-  const bas=ITEMS.filter(x=>x.group==="basic"&&(cat==="all"||x.cat===cat));
-  document.getElementById("recommended").innerHTML=rec.length?rec.map(renderCard).join(""):`<p class="muted">No items in this category yet.</p>`;
-  document.getElementById("basic").innerHTML=bas.length?bas.map(renderCard).join(""):`<p class="muted">No basic items in this category yet.</p>`;
-  document.querySelectorAll(".action[data-id]").forEach(b=>b.onclick=()=>handleItem(b.dataset.id));
-  coins();
-}
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled = true;
+viewer.appendChild(renderer.domElement);
 
-function handleItem(id){
-  const item=ITEMS.find(x=>x.id===id);
-  if(!item) return;
-  if(state.owned.includes(id)){
-    state.equipped[item.cat]=id;
-    save(); render(currentCat());
-    toast(`${item.name} equipped!`);
-    return;
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 1.05, 0);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.minDistance = 1.4;
+controls.maxDistance = 5.5;
+controls.maxPolarAngle = Math.PI * 0.92;
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0x7e9aaf, 2.2));
+const key = new THREE.DirectionalLight(0xffffff, 2.6);
+key.position.set(2.5, 4, 3);
+key.castShadow = true;
+scene.add(key);
+
+const rim = new THREE.DirectionalLight(0xb9d9ff, 1.5);
+rim.position.set(-3, 2, -2);
+scene.add(rim);
+
+const floor = new THREE.Mesh(
+  new THREE.CircleGeometry(1.25, 64),
+  new THREE.MeshStandardMaterial({ color: 0xd8dde5, roughness: .75, metalness: .05 })
+);
+floor.rotation.x = -Math.PI / 2;
+floor.position.y = 0;
+floor.receiveShadow = true;
+scene.add(floor);
+
+let currentVRM = null;
+
+// Temporary CC0 sample model for proof-of-concept.
+// Later, replace this URL with our own Moe VRM/GLB asset.
+const MODEL_URL =
+  'https://raw.githubusercontent.com/madjin/vrm-samples/master/Avatar_Orion.vrm';
+
+const loader = new GLTFLoader();
+loader.register(parser => new VRMLoaderPlugin(parser));
+
+loader.load(
+  MODEL_URL,
+  gltf => {
+    currentVRM = gltf.userData.vrm;
+    const model = currentVRM.scene;
+
+    // VRM 0.x models may face +Z instead of -Z depending on exporter.
+    model.rotation.y = Math.PI;
+    scene.add(model);
+
+    model.traverse(obj => {
+      if (obj.isMesh) {
+        obj.castShadow = true;
+        obj.receiveShadow = true;
+      }
+    });
+
+    // Fit model vertically and center it.
+    const box = new THREE.Box3().setFromObject(model);
+    const size = box.getSize(new THREE.Vector3());
+    const center = box.getCenter(new THREE.Vector3());
+
+    model.position.x -= center.x;
+    model.position.z -= center.z;
+    model.position.y -= box.min.y;
+
+    const targetHeight = 1.85;
+    if (size.y > 0) {
+      const s = targetHeight / size.y;
+      model.scale.setScalar(s);
+    }
+
+    controls.target.set(0, 1.02, 0);
+    camera.position.set(0, 1.18, 3.25);
+    controls.update();
+
+    loading.classList.add('hidden');
+  },
+  progress => {
+    if (progress.total) {
+      const pct = Math.round(progress.loaded / progress.total * 100);
+      loading.querySelector('span').textContent = `${pct}% loaded`;
+    }
+  },
+  err => {
+    console.error(err);
+    loading.classList.add('hidden');
+    errorBox.textContent =
+      'The 3D model could not load. Please check your internet connection or GitHub Pages settings.';
+    errorBox.classList.remove('hidden');
   }
-  if(state.coins<item.price){toast("Not enough coins yet!");return}
-  state.coins-=item.price;
-  state.owned.push(id);
-  state.equipped[item.cat]=id;
-  save(); render(currentCat());
-  toast(`Bought ${item.name}!`);
-}
+);
 
-function currentCat(){
-  return document.querySelector(".tab.active")?.dataset.cat || "all";
-}
-document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-  b.classList.add("active");render(b.dataset.cat);
+document.getElementById('resetBtn').addEventListener('click', () => {
+  camera.position.set(0, 1.18, 3.25);
+  controls.target.set(0, 1.02, 0);
+  controls.update();
 });
 
-const modal=document.getElementById("inventoryModal");
-document.getElementById("inventoryBtn").onclick=()=>{
-  const owned=ITEMS.filter(x=>state.owned.includes(x.id));
-  document.getElementById("inventoryGrid").innerHTML=owned.map(x=>`<div class="inv-item"><div style="font-size:52px">${x.art}</div><b>${x.name}</b></div>`).join("");
-  modal.classList.remove("hidden");
+function resize() {
+  const w = viewer.clientWidth;
+  const h = viewer.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
 }
-document.getElementById("closeInventory").onclick=()=>modal.classList.add("hidden");
-modal.onclick=e=>{if(e.target===modal)modal.classList.add("hidden")};
+window.addEventListener('resize', resize);
+resize();
 
-render();
+const clock = new THREE.Clock();
+renderer.setAnimationLoop(() => {
+  const delta = clock.getDelta();
+  if (currentVRM) currentVRM.update(delta);
+  controls.update();
+  renderer.render(scene, camera);
+});
