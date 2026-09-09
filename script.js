@@ -49,10 +49,10 @@ scene.add(floor);
 
 let currentVRM = null;
 
-// Temporary VRoid anime sample model for proof-of-concept.
-// Later, replace this URL with our own custom Moe VRM/GLB asset.
+// Temporary VRoid-style masculine sample model for proof-of-concept.
+// Hosted from a raw GitHub asset URL to avoid the previous broken model link.
 const MODEL_URL =
-  'https://github.com/norio/vrm-game-starter/raw/refs/heads/main/src/assets/sample.vrm';
+  'https://raw.githubusercontent.com/madjin/vrm-samples/master/vroid/masc_vroid.vrm';
 
 const loader = new GLTFLoader();
 loader.register(parser => new VRMLoaderPlugin(parser));
