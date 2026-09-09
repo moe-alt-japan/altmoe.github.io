@@ -1,12 +1,16 @@
-# NH Interactive v1.5.4 — Single-file Recovery Build
+# English Shop Prototype v1
 
-This recovery release places all CSS, vocabulary data, interface code, Adventure Mode, and battle logic directly inside `index.html`.
+A standalone visual prototype for the future Moe's English Practice shop/avatar system.
 
-## Upload instructions
-1. Delete the old `index.html`, `script.js`, `style.css`, and `data.js` from the GitHub repository root.
-2. Upload the five files in this package to the repository root.
-3. Commit the changes.
-4. Wait for GitHub Pages deployment to finish.
-5. Open the site and press Ctrl+F5.
+Current prototype features:
+- Anime-inspired shop layout based on the concept mockup
+- Profile with XP, level, and coins
+- Clothes, hats, accessories, pets, and backgrounds tabs
+- Try On button
+- Buy button with temporary demo prices
+- My Items inventory
+- Locked level rewards
+- Save/reset/random avatar preview controls
+- Browser localStorage for the demo state
 
-You should see `v1.5.4` beside “Learn. Play. Improve.” in the header. This confirms the correct build is live.
+Important: this is a **preview**, not yet connected to the real New Horizon vocabulary site. The avatar image is currently a concept image and Try On changes the selected outfit label rather than redrawing the avatar. Once the design is approved, the next step is to build true layered avatar parts and connect coins/XP to the existing games.
