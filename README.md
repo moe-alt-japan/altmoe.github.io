@@ -1,12 +1,16 @@
-# Avatar Step 1 Test v2
+# Avatar Step 1 Test v3
 
-Fixes:
-- Shows the full professional anime avatar instead of cropping the head off.
-- Uses `object-fit: contain` so the full character remains visible.
-- Gives the shop side a little more room.
-- Still separate from the real vocabulary website.
+This version forces a cache refresh.
 
-Upload these files to the same test repository, replacing the old ones:
+Important:
+- The image file is now named `moe-avatar-v3.jpg`.
+- CSS loads as `style.css?v=3`.
+- The header should show `AVATAR TEST • STEP 1 • V3`.
+- The avatar uses `object-fit: contain`, so the full character should be visible.
+
+Replace ALL files in the test repository with these:
 - index.html
 - style.css
-- moe-avatar.jpg
+- moe-avatar-v3.jpg
+
+Delete the old `moe-avatar.jpg` from the repo if it is still there.

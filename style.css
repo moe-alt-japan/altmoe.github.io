@@ -19,3 +19,20 @@ main{max-width:1380px;margin:22px auto;display:grid;grid-template-columns:minmax
 .coming{max-width:620px;margin:auto;background:#fff7c9;border:2px dashed #d5ae00;border-radius:15px;padding:16px;line-height:1.8}
 footer{text-align:center;padding:18px;color:#536b82}
 @media(max-width:850px){header{height:auto;padding:14px;gap:10px;flex-wrap:wrap}.brand{font-size:20px}main{grid-template-columns:1fr}.scene{height:620px}.scene img{object-fit:contain}}
+
+/* V3 cache-busting display fix */
+.scene{
+  height:690px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  background:linear-gradient(#c8eaff,#f7e5b8) !important;
+}
+.scene img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+  display:block !important;
+}
