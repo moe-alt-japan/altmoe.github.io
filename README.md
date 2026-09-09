@@ -1,16 +1,12 @@
-# Avatar Step 1 Test v3
+# Avatar Step 1 Test v4
 
-This version forces a cache refresh.
+Fix:
+- Moved the "Let's keep learning English!" speech bubble away from the character's face.
+- The bubble is now near the bottom-left of the avatar panel.
+- Header shows `AVATAR TEST • STEP 1 • V4` so you can confirm the newest version is loaded.
 
-Important:
-- The image file is now named `moe-avatar-v3.jpg`.
-- CSS loads as `style.css?v=3`.
-- The header should show `AVATAR TEST • STEP 1 • V3`.
-- The avatar uses `object-fit: contain`, so the full character should be visible.
-
-Replace ALL files in the test repository with these:
+Replace:
 - index.html
 - style.css
-- moe-avatar-v3.jpg
 
-Delete the old `moe-avatar.jpg` from the repo if it is still there.
+The avatar image file can stay the same (`moe-avatar-v3.jpg`).

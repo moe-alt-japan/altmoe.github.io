@@ -36,3 +36,13 @@ footer{text-align:center;padding:18px;color:#536b82}
   object-position:center center !important;
   display:block !important;
 }
+
+/* V4 speech bubble placement */
+.speech{
+  top:auto !important;
+  right:auto !important;
+  left:18px !important;
+  bottom:28px !important;
+  transform:rotate(-2deg) !important;
+  max-width:210px !important;
+}
