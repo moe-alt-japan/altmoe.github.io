@@ -1,31 +1,27 @@
-# Moe 3D Avatar Test — Step 2 v1
+# Moe 3D Avatar Test — Step 2 v2 (Anime Sample)
 
-This is the first REAL 3D experiment.
+Why v2:
+- v1 loaded a gray mannequin-like placeholder.
+- v2 switches to a VRoid anime-style sample model from the open-source
+  `norio/vrm-game-starter` repository.
+- This is STILL not final Moe. It only gets us much closer visually while
+  proving the browser/GitHub 3D system.
 
-WHAT THIS VERSION TESTS
-- Real browser-rendered 3D
-- Click/drag rotation
-- Mouse-wheel zoom
-- Right-drag pan
-- Reset View
-- GitHub Pages compatibility
-
-IMPORTANT
-This first test uses a temporary CC0 VRM sample model hosted on GitHub.
-It is NOT the final Moe character. The purpose is only to prove that
-a real 3D avatar can run smoothly in your website.
-
-FILES TO UPLOAD
+Upload/replace:
 - index.html
 - style.css
 - script.js
 
-The page loads Three.js, three-vrm, and the temporary VRM model from the internet.
+The yellow badge should say:
+3D AVATAR TEST • STEP 2 • V2
 
-NEXT, IF THIS WORKS WELL
-We replace the sample character with a custom beginner Moe model:
-- anime boy
-- white T-shirt
-- black pants
-- white sneakers
-- matching our approved visual direction
+What to test:
+- Drag to rotate 360 degrees
+- Mouse wheel zoom
+- Right-drag pan
+- Reset View
+- Loading speed
+- Whether an anime VRM feels suitable for our English Shop
+
+If this works well, the next real milestone is creating/importing our own
+beginner Moe VRM character (white T-shirt, black pants, white sneakers).

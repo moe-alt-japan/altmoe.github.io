@@ -49,10 +49,10 @@ scene.add(floor);
 
 let currentVRM = null;
 
-// Temporary CC0 sample model for proof-of-concept.
-// Later, replace this URL with our own Moe VRM/GLB asset.
+// Temporary VRoid anime sample model for proof-of-concept.
+// Later, replace this URL with our own custom Moe VRM/GLB asset.
 const MODEL_URL =
-  'https://raw.githubusercontent.com/madjin/vrm-samples/master/Avatar_Orion.vrm';
+  'https://github.com/norio/vrm-game-starter/raw/refs/heads/main/src/assets/sample.vrm';
 
 const loader = new GLTFLoader();
 loader.register(parser => new VRMLoaderPlugin(parser));
