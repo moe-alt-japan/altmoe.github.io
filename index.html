@@ -1,60 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#1764a5">
-  <title>Moe's English Practice — 3D Shop</title>
-  <link rel="stylesheet" href="style.css?v=7">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Moe Wearable Lab — Step 4B</title>
+<style>
+:root{--blue:#1768ad;--ink:#123b67;--line:#8ec9f7;--panel:#fff;--bg:#eaf7ff}
+*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:"Comic Sans MS","Comic Sans",cursive;background:var(--bg);color:var(--ink)}body{display:grid;grid-template-rows:auto 1fr;min-height:100vh}
+header{padding:12px 18px;background:var(--blue);color:#fff;font-weight:700;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.badge{font-size:12px;background:#fff;color:var(--blue);padding:4px 8px;border-radius:999px}
+main{position:relative;min-height:0;overflow:hidden}#viewer{position:absolute;inset:0}#viewer canvas{display:block;width:100%;height:100%}.panel{position:absolute;z-index:4;background:rgba(255,255,255,.96);border:2px solid var(--line);border-radius:16px;box-shadow:0 7px 24px #00000013}
+#status{left:16px;bottom:16px;padding:11px 13px;max-width:430px}.status-title{font-weight:700;margin-bottom:3px}#detail{font-family:system-ui,sans-serif;font-size:11px;color:#58728a;word-break:break-word;white-space:pre-wrap}
+#controls{right:16px;top:16px;padding:14px;width:285px;max-height:calc(100vh - 110px);overflow:auto}#controls h3{margin:0 0 10px}.views{display:grid;grid-template-columns:1fr 1fr;gap:8px}button,input,select{font:inherit}button{border:1px solid #7cbcf0;border-radius:10px;background:#fff;padding:9px;color:#155b96;cursor:pointer}button:hover{background:#eef8ff}.wide{width:100%;margin-top:8px}.section{border-top:1px dashed #bddff7;margin-top:12px;padding-top:12px}.section:first-of-type{border-top:0;margin-top:0;padding-top:0}.hint{font:12px system-ui,sans-serif;line-height:1.45;color:#58728a;margin:7px 0}.fileLabel{display:block;border:1px solid #7cbcf0;border-radius:10px;background:#fff;padding:9px;color:#155b96;text-align:center;cursor:pointer}.fileLabel input{display:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:7px}.field{margin-top:8px}.field label{display:flex;justify-content:space-between;font:12px system-ui,sans-serif;color:#58728a}.field input[type=range]{width:100%}.state{padding:8px 10px;border-radius:10px;background:#eff8ff;font:12px system-ui,sans-serif;margin-top:8px}.warn{background:#fff7dd;color:#7a5b00;border:1px solid #efd47a}
+#profile{left:16px;top:16px;width:220px;padding:14px}#profile h2{margin:0 0 4px;font-size:22px}.subtitle{font:12px system-ui,sans-serif;color:#58728a}.check{font:12px system-ui,sans-serif;line-height:1.55;margin-top:12px}
+@media(max-width:760px){#profile{display:none}#controls{right:8px;top:8px;width:250px}#status{left:8px;right:8px;bottom:8px;max-width:none}}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/","@pixiv/three-vrm":"https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3/lib/three-vrm.module.min.js"}}</script>
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">📖 Moe's English Practice</div>
-  <nav class="nav">
-    <button class="nav-btn active">Home</button>
-    <button class="nav-btn" disabled>Games</button>
-    <button class="nav-btn" id="shopNav">Shop</button>
-    <button class="nav-btn" id="inventoryNav">Inventory</button>
-    <button class="nav-btn" disabled>Progress</button>
-  </nav>
-  <div class="coin-pill">🪙 <span class="coinCount">1,250</span></div>
-</header>
-
-<main class="layout">
-  <aside class="panel profile-card">
-    <div class="profile-title-row"><div><div class="eyebrow">BEGINNER AVATAR</div><h1>Moe</h1></div><span class="level-badge">LV 1</span></div>
-    <div class="xp-label"><span>⭐ XP</span><strong>0 / 500</strong></div>
-    <div class="xp-track"><div class="xp-fill"></div></div>
-    <div class="stat-grid"><div class="stat"><span>🪙</span><strong class="coinCount">1,250</strong><small>Coins</small></div><div class="stat"><span>🎒</span><strong id="ownedCount">3</strong><small>Owned</small></div></div>
-    <div class="starter-note"><strong>Beginner progression</strong><p>Earn coins in English games, buy rewards, and build your collection.</p></div>
-    <button class="wide-btn" id="openShop">🛍️ Open Shop</button>
-    <button class="wide-btn ghost" id="openInventory">🎒 Inventory</button>
-  </aside>
-
-  <section class="viewer-card">
-    <div class="viewer-toolbar"><div class="viewer-title"><strong>3D Avatar</strong><span>STEP 3 • V3 • ROOT VRM</span></div><button id="resetBtn" class="primary-btn">↻ Reset View</button></div>
-    <div id="viewer"></div>
-    <div id="loading" class="loading"><div class="spinner"></div><strong>Loading your VRM…</strong><span id="loadDetail">Local beginner model</span></div>
-    <div class="view-buttons"><button data-view="front" class="view-btn active">Front</button><button data-view="back" class="view-btn">Back</button><button data-view="left" class="view-btn">Left</button><button data-view="right" class="view-btn">Right</button></div>
-    <div class="gesture-hint">🖱️ Drag = rotate • Wheel = zoom • Right-drag = move</div>
-  </section>
-
-  <aside class="panel controls-card">
-    <div class="eyebrow">EQUIPPED</div><h2>Beginner Set</h2>
-    <div id="equippedList" class="equipped-list"></div><hr>
-    <h3>Quick views</h3><div class="quick-grid"><button data-view="front">Front</button><button data-view="back">Back</button><button data-view="left">Left</button><button data-view="right">Right</button></div>
-    <div class="status-card" id="modelStatus"><span class="status-dot"></span><div><strong>Preparing model…</strong><small>Waiting for local VRM.</small></div></div>
-    <div class="next-box"><strong>Step 3</strong><p>Shop and Inventory are enabled after the avatar viewer starts.</p></div>
-  </aside>
+<header><div>📖 Moe's English Practice <span class="badge">STEP 4B • WEARABLE LAB • V2</span></div><div>Real GLB Wearable Test</div></header>
+<main>
+<div id="viewer"></div>
+<section id="profile" class="panel"><h2>Moe</h2><div class="subtitle">Wearable compatibility test</div><div class="check">✅ Keep working VRM loader<br>✅ Relaxed standing pose<br>✅ Load a separate .glb wearable<br>✅ Attach to body bone<br>✅ Equip / Unequip<br>✅ Adjust size & position<br>⏳ Final rigged hoodie comes after asset test</div></section>
+<section id="controls" class="panel">
+<h3>Avatar Controls</h3>
+<div class="views"><button data-view="front">Front</button><button data-view="back">Back</button><button data-view="left">Left</button><button data-view="right">Right</button></div>
+<button id="resetCamera" class="wide">Reset Camera</button>
+<div class="section"><strong>Pose</strong><div class="hint">Moe now starts in a relaxed standing pose instead of a T-pose.</div><div class="row"><button id="relaxedPose">Relaxed</button><button id="tPose">T-Pose</button></div></div>
+<div class="section"><strong>1. Wearable file</strong><div class="hint">If <code>wearables/english-hoodie.glb</code> exists, it loads automatically. You can also choose any GLB from your computer.</div><label class="fileLabel">Choose GLB wearable<input id="wearableFile" type="file" accept=".glb,model/gltf-binary"></label><div id="wearableState" class="state warn">No wearable loaded yet.</div></div>
+<div class="section"><strong>2. Attach & equip</strong><div class="row"><select id="attachBone"><option value="chest">Chest</option><option value="upperChest">Upper Chest</option><option value="hips">Hips</option><option value="head">Head</option></select><button id="reattach">Attach</button></div><div class="row" style="margin-top:8px"><button id="equip">Equip</button><button id="unequip">Unequip</button></div></div>
+<div class="section"><strong>3. Fit controls</strong><div class="field"><label>Scale <span id="scaleVal">1.00</span></label><input id="scale" type="range" min="0.05" max="3" step="0.01" value="1"></div><div class="field"><label>X <span id="xVal">0.00</span></label><input id="x" type="range" min="-1" max="1" step="0.01" value="0"></div><div class="field"><label>Y <span id="yVal">0.00</span></label><input id="y" type="range" min="-1" max="1" step="0.01" value="0"></div><div class="field"><label>Z <span id="zVal">0.00</span></label><input id="z" type="range" min="-1" max="1" step="0.01" value="0"></div><div class="field"><label>Rotate Y° <span id="ryVal">0</span></label><input id="ry" type="range" min="-180" max="180" step="1" value="0"></div><button id="resetFit" class="wide">Reset Fit</button></div>
+<div class="section"><div class="hint">Important: a rigid GLB can be positioned on Moe, but a hoodie that bends with arms/body must be skinned/rigged to a compatible skeleton. This lab tells us whether the asset is usable before we put it in the Shop.</div></div>
+</section>
+<section id="status" class="panel"><div id="statusTitle" class="status-title">Starting 3D viewer…</div><div id="detail">Loading ./moe-beginner.vrm</div></section>
 </main>
-
-<div id="overlay" class="overlay hidden"><section class="shop-modal">
-  <div class="modal-head"><div><div class="eyebrow" id="modalEyebrow">REWARD SHOP</div><h2 id="modalTitle">Shop</h2></div><button id="closeModal" class="close-btn">✕</button></div>
-  <div id="categoryTabs" class="tabs"></div><div id="itemGrid" class="item-grid"></div>
-  <div class="modal-foot"><span>🪙 <strong class="coinCount">1,250</strong> coins</span><small>Items are saved on this device.</small></div>
-</section></div>
-<div id="toast" class="toast hidden"></div><div id="errorBox" class="error hidden"></div><input id="vrmPicker" type="file" accept=".vrm" hidden>
-
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/","@pixiv/three-vrm":"https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3.4.2/lib/three-vrm.module.js"}}</script>
-<script type="module" src="script.js?v=7"></script>
+<script type="module" src="script.js?v=4b2"></script>
 </body></html>
